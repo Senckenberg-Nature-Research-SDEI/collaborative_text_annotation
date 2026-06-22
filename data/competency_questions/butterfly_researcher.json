@@ -1,0 +1,333 @@
+[{
+  "user_story": {
+    "title": "Butterfly Researcher",
+    "persona": {
+      "name": "Alex",
+      "role": "Butterfly Researcher",
+      "description": "Alex studies the biology, systematics, and ecology of butterflies and curates a collection of Lepidoptera specimens. His research focuses on the monitoring, taxonomy, and conservation of European butterflies, particularly those from the Macaronesian Islands. He frequently works with type specimens to verify species identities, investigate taxonomic relationships, and analyze biodiversity patterns."
+    },
+    "scenario_and_motivation": {
+      "scenario": "Alex regularly consults type specimens and their associated metadata to support taxonomic, ecological, and conservation research. Currently, much of this information is scattered across specimen labels, publications, collection databases, and PDF catalogs, making searches time-consuming and inefficient.",
+      "motivation": "A Type Specimen Knowledge Base would provide centralized, structured access to information on type specimens.",
+      "knowledge_base_should_include": [
+        "Taxonomic names",
+        "Synonymies",
+        "Collection locations",
+        "Repositories",
+        "Images",
+        "Genetic resources"
+      ],
+      "benefits": [
+        "Verify whether a newly recognized species has previously been described under another name.",
+        "Identify the institution or collection where a type specimen is deposited.",
+        "Access linked resources such as photographs, DNA barcodes, and related publications.",
+        "Analyze trends in species discovery and description over time.",
+        "Explore the geographic distribution and provenance of type specimens."
+      ]
+    },
+    "competency_questions": [
+      {
+        "id": "CQ1",
+        "title": "Taxonomic Synonymy",
+        "question": "Which subjective junior synonyms have been reported for a given species within a specified geographic region?"
+      },
+      {
+        "id": "CQ2",
+        "title": "Type Specimen Repository",
+        "question": "In which collection or institution is the type specimen of a given species deposited?"
+      },
+      {
+        "id": "CQ3",
+        "title": "Associated Digital Resources",
+        "question": "What photographs, DNA barcodes, or other digital resources are available for a given type specimen?"
+      },
+      {
+        "id": "CQ4",
+        "title": "Temporal Trends in Species Descriptions",
+        "question": "How has the number of species descriptions changed over time, and what trends can be observed across different years or taxonomic groups?"
+      },
+      {
+        "id": "CQ5",
+        "title": "Type Locality Information",
+        "question": "Where was the type specimen of a given species originally collected?"
+      },
+      {
+        "id": "CQ6",
+        "title": "Geographic Distribution of Type Specimens",
+        "question": "Which type specimens originate from a specified geographic region or island group?"
+      },
+      {
+        "id": "CQ7",
+        "title": "Taxonomic Authorship",
+        "question": "Who described a given species, and in which publication was it originally described?"
+      },
+      {
+        "id": "CQ8",
+        "title": "Collection Holdings",
+        "question": "Which type specimens are held by a particular museum, institution, or collection?"
+      }
+    ]
+  }
+},
+{
+  "user_story": {
+    "title": "Chief Editor of a Zoological Journal",
+    "persona": {
+      "name": "Maria",
+      "role": "Chief Editor, Zoological Journal",
+      "description": "Maria is responsible for the scientific content, quality, and strategic development of a zoological journal with a focus on insects. She works to increase the visibility, dissemination, and impact of the journal while supporting the mission of the research institute that hosts it as a diamond open-access publication. Maria advocates for open access, open data, FAIR principles, and the data liberation approach outlined in the Disentis Roadmap. She seeks to make type specimen information published in the journal accessible, discoverable, and reusable in order to strengthen the journal’s contribution to biodiversity research and the open science ecosystem."
+    },
+    "scenario_and_motivation": {
+      "scenario": "Maria wants a comprehensive overview of the type specimen information published in her journal and better insight into the journal’s contribution to biodiversity knowledge. Currently, information about type specimens is embedded within publications and cannot easily be retrieved, aggregated, or analyzed. Answering questions about the journal’s type specimen content often requires manual searches, OCR processing, and spreadsheet compilation.",
+      "motivation": "A Type Specimen Knowledge Base would provide structured and machine-readable access to type specimen information published in the journal. It would increase the visibility, discoverability, and reuse of these data, support reporting and strategic planning, and help demonstrate the journal’s scientific contribution and impact.",
+      "knowledge_base_should_support": [
+        "Centralized access to type specimen information published in the journal",
+        "Discovery of type specimen records through biodiversity infrastructures and external knowledge systems",
+        "Reporting to institute management, advisory boards, and editorial boards",
+        "Monitoring trends in publication of type specimen information",
+        "Identification of key publications and collections contributing to scientific impact"
+      ],
+      "benefits": [
+        "Obtain a comprehensive overview of all type specimens published or mentioned in the journal.",
+        "Demonstrate the journal’s contribution to biodiversity knowledge and taxonomy.",
+        "Increase the visibility, discoverability, and reuse of type specimen information.",
+        "Support reporting activities for institute management, advisory boards, and the editorial board.",
+        "Monitor trends and developments in the publication of type specimen information.",
+        "Identify key publications and collections contributing to the journal’s scientific impact.",
+        "Strengthen the reputation of the journal and attract authors publishing high-quality research.",
+        "Support open science principles by making published data more FAIR and reusable."
+      ]
+    },
+    "competency_questions": [
+      {
+        "id": "CQ1",
+        "title": "Published Type Specimens and Metadata",
+        "question": "Which type specimens are published or mentioned in the journal, and what associated metadata are available (e.g., hosting institution, institutional codes, specimen identifiers/PIDs, taxonomic information, locality, sex, and number of specimens)?"
+      },
+      {
+        "id": "CQ2",
+        "title": "Type Specimen Quantification",
+        "question": "How many type specimens are represented in the journal?"
+      },
+      {
+        "id": "CQ3",
+        "title": "Collection and Repository Holdings",
+        "question": "Which institutions and collections currently hold the type specimens published in the journal?"
+      },
+      {
+        "id": "CQ4",
+        "title": "Taxonomic Distribution",
+        "question": "How are the type specimens published in the journal distributed across taxonomic groups (e.g., family, genus, species)?"
+      },
+      {
+        "id": "CQ5",
+        "title": "Geographic Distribution",
+        "question": "How are the type specimens published in the journal distributed geographically according to collection localities or gathering sites?"
+      },
+      {
+        "id": "CQ6",
+        "title": "Relevant Publications and Catalogues",
+        "question": "Which publications in the journal contain type specimen information, and which publications can be identified as type specimen catalogues?"
+      },
+      {
+        "id": "CQ7",
+        "title": "Publication Context",
+        "question": "In which publications and publication sections is information on a specific type specimen reported?"
+      },
+      {
+        "id": "CQ8",
+        "title": "Major Contributors",
+        "question": "Which publications contribute the largest number of type specimen records to the journal?"
+      },
+      {
+        "id": "CQ9",
+        "title": "Temporal Trends",
+        "question": "How has the publication of type specimen information changed over time within the journal?"
+      }
+    ]
+  }
+},
+{
+  "user_story": {
+    "title": "Collection Manager",
+    "persona": {
+      "name": "Thomas",
+      "role": "Collection Manager, Entomological Collection",
+      "description": "Thomas is responsible for the operational management, documentation, and quality assurance of an entomological collection. He maintains and develops collection management systems, coordinates digitization activities, and ensures that specimen information is accurate, complete, and accessible. He works with curators, collection scientists, collection managers, and researchers to integrate information from collection databases, historical catalogues, scientific publications, archives, and specimen labels."
+    },
+    "scenario_and_motivation": {
+      "scenario": "Thomas wants to improve the quality, completeness, and accessibility of information about specimens held in his collection. Type specimen information is often distributed across collection management systems, historical catalogues, scientific publications, archives, and specimen labels, making it difficult to maintain complete and consistent collection records.",
+      "motivation": "A Type Specimen Knowledge Base would provide structured access to information contained in type specimen catalogues and publications and allow Thomas to connect it with existing collection documentation. It would support record enrichment, metadata quality improvement, inconsistency detection, and access to historical documentation and expert knowledge.",
+      "knowledge_base_should_support": [
+        "Integration of information from catalogues, publications, collection databases, archives, and specimen labels",
+        "Enrichment of specimen records with additional metadata and identifiers",
+        "Verification and reconciliation of information from different sources",
+        "Identification of missing, incomplete, or inconsistent specimen information",
+        "Links between physical specimens, digital records, and published scientific knowledge",
+        "Data quality assurance and digitization activities"
+      ],
+      "benefits": [
+        "Identify information contained in catalogues and publications that is not yet represented in collection management systems.",
+        "Enrich specimen records with additional metadata, identifiers, taxonomic information, locality information, and links to publications and external resources.",
+        "Verify and reconcile information from different sources.",
+        "Identify missing, incomplete, or inconsistent specimen information.",
+        "Strengthen the connections between physical specimens, collection records, and published scientific knowledge.",
+        "Support data quality assurance and collection digitization activities.",
+        "Improve the completeness, consistency, and accessibility of collection data.",
+        "Increase the value, usability, and discoverability of the collection for researchers, collection staff, and biodiversity knowledge infrastructures."
+      ]
+    },
+    "competency_questions": [
+      {
+        "id": "CQ1",
+        "title": "Type Specimen Documentation",
+        "question": "Which type specimens are documented in the available type specimen catalogues and publications, and what information is available for them?"
+      },
+      {
+        "id": "CQ2",
+        "title": "Available Catalogues and Publications",
+        "question": "Which type specimen catalogues and publications are available for my institution or collection?"
+      },
+      {
+        "id": "CQ3",
+        "title": "Specialist Contributions",
+        "question": "Which authors or specialists have documented type specimens from my collection?"
+      },
+      {
+        "id": "CQ4",
+        "title": "Relevant Publications",
+        "question": "Which publications provide information about a particular type specimen or group of type specimens?"
+      },
+      {
+        "id": "CQ5",
+        "title": "Metadata Availability",
+        "question": "Which metadata elements (e.g., taxonomy, locality, collector, identifiers, repository information, references, images) are documented for type specimens in the available catalogues and publications?"
+      },
+      {
+        "id": "CQ6",
+        "title": "Documentation Completeness",
+        "question": "Which type specimens have the most comprehensive documentation across catalogues and publications?"
+      },
+      {
+        "id": "CQ7",
+        "title": "Catalogue Coverage",
+        "question": "Which type specimen catalogues provide the most comprehensive documentation for a collection, taxonomic group, or set of type specimens?"
+      },
+      {
+        "id": "CQ8",
+        "title": "Multiple Documentation Sources",
+        "question": "Which type specimens are documented by multiple catalogues or publications?"
+      },
+      {
+        "id": "CQ9",
+        "title": "Historical Changes in Documentation",
+        "question": "How has the information available for a particular type specimen changed across catalogues and publications over time?"
+      },
+      {
+        "id": "CQ10",
+        "title": "Identifiers and External Resources",
+        "question": "Which type specimens have associated identifiers, collection numbers, or links to external resources?"
+      },
+      {
+        "id": "CQ11",
+        "title": "Richly Connected Specimens",
+        "question": "Which type specimens are associated with the richest network of linked information, such as publications, taxonomic names, institutions, collectors, localities, and identifiers?"
+      },
+      {
+        "id": "CQ12",
+        "title": "Information Diversity and Coverage",
+        "question": "How does the amount and diversity of information available for type specimens vary across catalogues and publications?"
+      }
+    ]
+  }
+},
+{
+  "user_story": {
+    "title": "Scientific Head of Collection",
+    "persona": {
+      "name": "Wanja",
+      "role": "Head of Collection, Entomological Collection",
+      "description": "Wanja oversees the scientific quality, strategic development, and long-term management of an entomological collection. He is responsible for ensuring the collection’s scientific relevance, documenting its strengths, and supporting research activities. His work focuses on understanding the significance, development, and knowledge value of type specimen holdings across the collection."
+    },
+    "scenario_and_motivation": {
+      "scenario": "Wanja requires a comprehensive understanding of the collection’s type specimens and their scientific importance. Information about type specimens, catalogues, taxonomic coverage, specialists, and historical interpretations is often distributed across collection databases, publications, archival records, and specimen documentation, making strategic assessment difficult and time-consuming.",
+      "motivation": "A Type Specimen Knowledge Base would provide centralized, structured access to information about type specimens, catalogues, taxonomic groups, geographic coverage, historical documentation, and collection development. Advanced search and analytical capabilities would support strategic assessment, collection planning, and research prioritization.",
+      "knowledge_base_should_support": [
+        "Centralized access to type specimen information",
+        "Analysis of taxonomic and geographic coverage",
+        "Assessment of collection strengths and knowledge gaps",
+        "Exploration of historical collection development",
+        "Access to published catalogues and collection documentation",
+        "Identification of specialists and their contributions",
+        "Support for strategic planning, digitization, and research activities"
+      ],
+      "benefits": [
+        "Obtain a complete overview of documented type specimens in the collection.",
+        "Assess the taxonomic and geographic coverage of type holdings.",
+        "Identify the strongest and most comprehensively represented groups.",
+        "Explore the historical development of the collection and its scientific interpretation.",
+        "Review published catalogues and their contributions to collection knowledge.",
+        "Identify specialists who have documented and studied the collection.",
+        "Support strategic decisions regarding collection development, digitization, and research priorities."
+      ]
+    },
+    "competency_questions": [
+      {
+        "id": "CQ1",
+        "title": "Type Specimen Inventory",
+        "question": "Which type specimens are documented in the collection?"
+      },
+      {
+        "id": "CQ2",
+        "title": "Type Specimen Quantification",
+        "question": "How many type specimens exist in the collection?"
+      },
+      {
+        "id": "CQ3",
+        "title": "Taxonomic Distribution",
+        "question": "How are type specimens distributed across taxonomic groups?"
+      },
+      {
+        "id": "CQ4",
+        "title": "Collection Strengths by Taxon",
+        "question": "Which taxonomic groups are best represented in the collection?"
+      },
+      {
+        "id": "CQ5",
+        "title": "Geographic Coverage",
+        "question": "What geographic regions are represented by the collection’s type specimens?"
+      },
+      {
+        "id": "CQ6",
+        "title": "Published Catalogues",
+        "question": "Which catalogues documenting the collection have been published?"
+      },
+      {
+        "id": "CQ7",
+        "title": "Specialist Contributions",
+        "question": "Which specialists have documented or studied the collection’s type specimens?"
+      },
+      {
+        "id": "CQ8",
+        "title": "Historical Interpretation",
+        "question": "How has the scientific interpretation of the collection changed over time?"
+      },
+      {
+        "id": "CQ9",
+        "title": "Collection Development",
+        "question": "How has the collection developed throughout its history?"
+      },
+      {
+        "id": "CQ10",
+        "title": "Collection Strength Assessment",
+        "question": "What are the principal scientific strengths of the collection?"
+      },
+      {
+        "id": "CQ11",
+        "title": "Knowledge Contribution of Catalogues",
+        "question": "Which catalogues contribute the most knowledge and documentation about the collection?"
+      }
+    ]
+  }
+}
+]
