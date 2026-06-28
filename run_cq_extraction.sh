@@ -4,6 +4,7 @@ set -euo pipefail
 INPUT_FILE="${1:-data/competency_questions/competency_questions.json}"
 OUTPUT_FILE="${2:-outputs/cq_concepts_properties.jsonl}"
 GROUPED_OUTPUT_FILE="${3:-outputs/cq_concepts_properties_grouped.json}"
+RDF_OUTPUT_FILE="${4:-outputs/cq_concepts_properties.ttl}"
 MODEL_ALIAS="${MODEL_ALIAS:-llm_model}"
 CONFIG_FILE="${CONFIG_FILE:-config/model_config.yaml}"
 
@@ -14,6 +15,7 @@ fi
 
 mkdir -p "$(dirname "$OUTPUT_FILE")"
 mkdir -p "$(dirname "$GROUPED_OUTPUT_FILE")"
+mkdir -p "$(dirname "$RDF_OUTPUT_FILE")"
 TMP_PROMPTS_FILE="$(mktemp)"
 SYSTEM_PROMPT_FILE="$(mktemp)"
 
@@ -158,5 +160,10 @@ with open(grouped_path, "w", encoding="utf-8") as out:
   json.dump(result, out, ensure_ascii=False, indent=2)
 PY
 
+python src/serialize_cq_results_to_rdf.py \
+  --input "$GROUPED_OUTPUT_FILE" \
+  --output "$RDF_OUTPUT_FILE"
+
 echo "Extraction complete. Results saved to: $OUTPUT_FILE"
 echo "Grouped output saved to: $GROUPED_OUTPUT_FILE"
+echo "RDF Turtle saved to: $RDF_OUTPUT_FILE"
