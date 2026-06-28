@@ -23,12 +23,16 @@ Useful options:
 
 ## Extract Concepts And Properties From Competency Questions
 Run:
-`./run_cq_extraction.sh [input_json] [output_jsonl] [grouped_output_json]`
+`./run_cq_extraction.sh [input_json] [output_jsonl] [grouped_output_json] [rdf_turtle_output]`
 
 Defaults:
 * input: `data/competency_questions/competency_questions.json`
 * jsonl output: `outputs/cq_concepts_properties.jsonl`
 * grouped output: `outputs/cq_concepts_properties_grouped.json`
+* rdf output: `outputs/cq_concepts_properties.ttl`
+
+Serialize existing grouped results to RDF Turtle only:
+`python src/serialize_cq_results_to_rdf.py --input outputs/cq_concepts_properties_grouped.json --output outputs/cq_concepts_properties.ttl`
 
 
 ## MCP with Dynamic Memory Architecture
