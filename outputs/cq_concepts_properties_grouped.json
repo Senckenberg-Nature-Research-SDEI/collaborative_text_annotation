@@ -1,0 +1,2217 @@
+{
+  "summary": {
+    "stories": 4,
+    "entries": 40,
+    "invalid_rows": []
+  },
+  "by_user_story": {
+    "Butterfly Researcher": {
+      "CQ1": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ1",
+        "cq_title": "Taxonomic Synonymy",
+        "question": "Which subjective junior synonyms have been reported for a given species within a specified geographic region?",
+        "concepts": [
+          {
+            "label": "Species",
+            "description": "A group of organisms capable of interbreeding and producing fertile offspring",
+            "synonyms": [
+              "Taxon"
+            ]
+          },
+          {
+            "label": "Subjective junior synonym",
+            "description": "A later name considered to refer to the same taxon as an earlier name based on taxonomic opinion",
+            "synonyms": [
+              "Junior synonym"
+            ]
+          },
+          {
+            "label": "Geographic region",
+            "description": "A defined area or location on Earth",
+            "synonyms": [
+              "Region",
+              "Location"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "has subjective junior synonym",
+            "domain": "Species",
+            "range": "Subjective junior synonym",
+            "description": "Relates a species to its subjective junior synonyms"
+          },
+          {
+            "label": "reported in",
+            "domain": "Subjective junior synonym",
+            "range": "Geographic region",
+            "description": "Indicates the geographic region where the subjective junior synonym has been reported"
+          }
+        ]
+      },
+      "CQ2": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ2",
+        "cq_title": "Type Specimen Repository",
+        "question": "In which collection or institution is the type specimen of a given species deposited?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen used to define the species",
+            "synonyms": [
+              "Holotype",
+              "Reference Specimen"
+            ]
+          },
+          {
+            "label": "Species",
+            "description": "A group of organisms capable of interbreeding",
+            "synonyms": [
+              "Taxon"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "An organized set of specimens held for study",
+            "synonyms": [
+              "Specimen Collection"
+            ]
+          },
+          {
+            "label": "Institution",
+            "description": "An organization housing collections",
+            "synonyms": [
+              "Museum",
+              "Repository"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is deposited in",
+            "domain": "Type Specimen",
+            "range": "Collection",
+            "description": "Indicates the collection where the type specimen is held"
+          },
+          {
+            "label": "is held by",
+            "domain": "Collection",
+            "range": "Institution",
+            "description": "Indicates the institution responsible for the collection"
+          },
+          {
+            "label": "has type specimen",
+            "domain": "Species",
+            "range": "Type Specimen",
+            "description": "Links a species to its defining type specimen"
+          }
+        ]
+      },
+      "CQ3": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ3",
+        "cq_title": "Associated Digital Resources",
+        "question": "What photographs, DNA barcodes, or other digital resources are available for a given type specimen?",
+        "concepts": [
+          {
+            "label": "Type specimen",
+            "description": "A specimen designated as the reference for a species",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Photograph",
+            "description": "A digital image capturing the visual appearance of a specimen",
+            "synonyms": [
+              "Image",
+              "Photo"
+            ]
+          },
+          {
+            "label": "DNA barcode",
+            "description": "A short genetic sequence from a standardized region of the genome used for species identification",
+            "synonyms": [
+              "Genetic barcode"
+            ]
+          },
+          {
+            "label": "Digital resource",
+            "description": "Any digital data or media related to a specimen",
+            "synonyms": [
+              "Digital data",
+              "Digital media"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "has digital resource",
+            "domain": "Type specimen",
+            "range": "Digital resource",
+            "description": "Associates a type specimen with digital resources available for it"
+          },
+          {
+            "label": "is photograph of",
+            "domain": "Photograph",
+            "range": "Type specimen",
+            "description": "Indicates the specimen that is depicted in the photograph"
+          },
+          {
+            "label": "is DNA barcode of",
+            "domain": "DNA barcode",
+            "range": "Type specimen",
+            "description": "Indicates the specimen from which the DNA barcode was obtained"
+          }
+        ]
+      },
+      "CQ4": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ4",
+        "cq_title": "Temporal Trends in Species Descriptions",
+        "question": "How has the number of species descriptions changed over time, and what trends can be observed across different years or taxonomic groups?",
+        "concepts": [
+          {
+            "label": "Species Description",
+            "description": "A formal account or characterization of a species",
+            "synonyms": [
+              "Species Account",
+              "Species Identification"
+            ]
+          },
+          {
+            "label": "Year",
+            "description": "A calendar year representing a point in time",
+            "synonyms": [
+              "Calendar Year"
+            ]
+          },
+          {
+            "label": "Taxonomic Group",
+            "description": "A classification category grouping organisms based on shared characteristics",
+            "synonyms": [
+              "Taxon",
+              "Taxa"
+            ]
+          },
+          {
+            "label": "Trend",
+            "description": "A general direction or pattern of change over time",
+            "synonyms": [
+              "Pattern",
+              "Temporal Trend"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasDescriptionYear",
+            "domain": "Species Description",
+            "range": "Year",
+            "description": "The year in which the species description was published"
+          },
+          {
+            "label": "belongsToTaxonomicGroup",
+            "domain": "Species Description",
+            "range": "Taxonomic Group",
+            "description": "The taxonomic group to which the species described belongs"
+          },
+          {
+            "label": "hasCount",
+            "domain": "Year",
+            "range": "integer",
+            "description": "The number of species descriptions recorded in that year"
+          },
+          {
+            "label": "exhibitsTrend",
+            "domain": "Taxonomic Group",
+            "range": "Trend",
+            "description": "The observed temporal pattern of species descriptions within the taxonomic group"
+          }
+        ]
+      },
+      "CQ5": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ5",
+        "cq_title": "Type Locality Information",
+        "question": "Where was the type specimen of a given species originally collected?",
+        "concepts": [
+          {
+            "label": "Type specimen",
+            "description": "A specimen used as the reference point when a species is first described",
+            "synonyms": [
+              "Holotype",
+              "Type example"
+            ]
+          },
+          {
+            "label": "Species",
+            "description": "A group of organisms capable of interbreeding and producing fertile offspring",
+            "synonyms": [
+              "Taxonomic species"
+            ]
+          },
+          {
+            "label": "Locality",
+            "description": "The geographic location where a specimen was collected",
+            "synonyms": [
+              "Collection site",
+              "Location"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasTypeSpecimen",
+            "domain": "Species",
+            "range": "Type specimen",
+            "description": "Associates a species with its type specimen"
+          },
+          {
+            "label": "collectedAt",
+            "domain": "Type specimen",
+            "range": "Locality",
+            "description": "Indicates the location where the type specimen was originally collected"
+          }
+        ]
+      },
+      "CQ6": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ6",
+        "cq_title": "Geographic Distribution of Type Specimens",
+        "question": "Which type specimens originate from a specified geographic region or island group?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen selected to serve as a reference point when a species is first described",
+            "synonyms": [
+              "Reference Specimen",
+              "Holotype",
+              "Paratype"
+            ]
+          },
+          {
+            "label": "Geographic Region",
+            "description": "A defined area of land or sea distinguished by geographic features",
+            "synonyms": [
+              "Region",
+              "Area"
+            ]
+          },
+          {
+            "label": "Island Group",
+            "description": "A cluster of islands grouped together geographically",
+            "synonyms": [
+              "Archipelago"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "originates from",
+            "domain": "Type Specimen",
+            "range": "Geographic Region",
+            "description": "The geographic region where the type specimen was originally found"
+          },
+          {
+            "label": "originates from",
+            "domain": "Type Specimen",
+            "range": "Island Group",
+            "description": "The island group where the type specimen was originally found"
+          }
+        ]
+      },
+      "CQ7": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ7",
+        "cq_title": "Taxonomic Authorship",
+        "question": "Who described a given species, and in which publication was it originally described?",
+        "concepts": [
+          {
+            "label": "Species",
+            "description": "A taxonomic group of organisms capable of interbreeding",
+            "synonyms": [
+              "Taxon"
+            ]
+          },
+          {
+            "label": "Person",
+            "description": "An individual who can describe species",
+            "synonyms": [
+              "Author",
+              "Taxonomist"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A document or work where species descriptions are published",
+            "synonyms": [
+              "Article",
+              "Paper",
+              "Book"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "describedBy",
+            "domain": "Species",
+            "range": "Person",
+            "description": "The person who described the species"
+          },
+          {
+            "label": "originalDescriptionPublication",
+            "domain": "Species",
+            "range": "Publication",
+            "description": "The publication where the species was originally described"
+          }
+        ]
+      },
+      "CQ8": {
+        "user_story": "Butterfly Researcher",
+        "cq_id": "CQ8",
+        "cq_title": "Collection Holdings",
+        "question": "Which type specimens are held by a particular museum, institution, or collection?",
+        "concepts": [
+          {
+            "label": "Type specimen",
+            "description": "A specimen designated as the reference example of a species",
+            "synonyms": [
+              "Type sample"
+            ]
+          },
+          {
+            "label": "Museum",
+            "description": "An institution that collects, preserves, and displays specimens",
+            "synonyms": []
+          },
+          {
+            "label": "Institution",
+            "description": "An organization that may hold collections or specimens",
+            "synonyms": []
+          },
+          {
+            "label": "Collection",
+            "description": "An assemblage of specimens held by a museum or institution",
+            "synonyms": [
+              "Specimen collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is held by",
+            "domain": "Type specimen",
+            "range": "Museum",
+            "description": "Indicates the museum or institution that holds the type specimen"
+          },
+          {
+            "label": "is held by",
+            "domain": "Type specimen",
+            "range": "Institution",
+            "description": "Indicates the institution that holds the type specimen"
+          },
+          {
+            "label": "is held by",
+            "domain": "Type specimen",
+            "range": "Collection",
+            "description": "Indicates the collection that holds the type specimen"
+          }
+        ]
+      }
+    },
+    "Chief Editor of a Zoological Journal": {
+      "CQ1": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ1",
+        "cq_title": "Published Type Specimens and Metadata",
+        "question": "Which type specimens are published or mentioned in the journal, and what associated metadata are available (e.g., hosting institution, institutional codes, specimen identifiers/PIDs, taxonomic information, locality, sex, and number of specimens)?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "An individual specimen designated as the type of a species or subspecies",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "A periodical publication for scholarly articles",
+            "synonyms": [
+              "Publication"
+            ]
+          },
+          {
+            "label": "Institution",
+            "description": "An organization that hosts or holds specimens",
+            "synonyms": [
+              "Hosting Institution"
+            ]
+          },
+          {
+            "label": "Institutional Code",
+            "description": "A code identifying an institution",
+            "synonyms": [
+              "Institution Code"
+            ]
+          },
+          {
+            "label": "Specimen Identifier",
+            "description": "A unique identifier assigned to a specimen",
+            "synonyms": [
+              "PID",
+              "Persistent Identifier"
+            ]
+          },
+          {
+            "label": "Taxonomic Information",
+            "description": "Classification details of a specimen in taxonomy",
+            "synonyms": [
+              "Taxonomy"
+            ]
+          },
+          {
+            "label": "Locality",
+            "description": "Geographic location where a specimen was collected",
+            "synonyms": [
+              "Collection Site",
+              "Location"
+            ]
+          },
+          {
+            "label": "Sex",
+            "description": "Biological sex of a specimen",
+            "synonyms": []
+          },
+          {
+            "label": "Number of Specimens",
+            "description": "Count of specimens",
+            "synonyms": [
+              "Specimen Count"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is published in",
+            "domain": "Type Specimen",
+            "range": "Journal",
+            "description": "Relates a type specimen to the journal where it is published or mentioned"
+          },
+          {
+            "label": "has hosting institution",
+            "domain": "Type Specimen",
+            "range": "Institution",
+            "description": "Indicates the institution that hosts the specimen"
+          },
+          {
+            "label": "has institutional code",
+            "domain": "Institution",
+            "range": "Institutional Code",
+            "description": "The code identifying the institution"
+          },
+          {
+            "label": "has specimen identifier",
+            "domain": "Type Specimen",
+            "range": "Specimen Identifier",
+            "description": "Unique identifier assigned to the specimen"
+          },
+          {
+            "label": "has taxonomic information",
+            "domain": "Type Specimen",
+            "range": "Taxonomic Information",
+            "description": "Taxonomic classification details of the specimen"
+          },
+          {
+            "label": "has locality",
+            "domain": "Type Specimen",
+            "range": "Locality",
+            "description": "Geographic location of specimen collection"
+          },
+          {
+            "label": "has sex",
+            "domain": "Type Specimen",
+            "range": "Sex",
+            "description": "Biological sex of the specimen"
+          },
+          {
+            "label": "has specimen count",
+            "domain": "Type Specimen",
+            "range": "Number of Specimens",
+            "description": "Number of specimens represented"
+          }
+        ]
+      },
+      "CQ2": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ2",
+        "cq_title": "Type Specimen Quantification",
+        "question": "How many type specimens are represented in the journal?",
+        "concepts": [
+          {
+            "label": "Type specimen",
+            "description": "An individual specimen on which the description and name of a new species is based",
+            "synonyms": [
+              "Type"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "A periodical publication that contains scholarly articles",
+            "synonyms": [
+              "Publication"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is represented in",
+            "domain": "Type specimen",
+            "range": "Journal",
+            "description": "Indicates that a type specimen is featured or included in a journal"
+          }
+        ]
+      },
+      "CQ3": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ3",
+        "cq_title": "Collection and Repository Holdings",
+        "question": "Which institutions and collections currently hold the type specimens published in the journal?",
+        "concepts": [
+          {
+            "label": "Institution",
+            "description": "An organization such as a museum or research center that holds specimens",
+            "synonyms": [
+              "Organization",
+              "Repository"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A group of specimens held together within an institution",
+            "synonyms": [
+              "Specimen collection",
+              "Repository collection"
+            ]
+          },
+          {
+            "label": "Type specimen",
+            "description": "A specimen that serves as the reference point for the identification of a species",
+            "synonyms": [
+              "Holotype",
+              "Lectotype"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "A periodical publication in which scientific research is published",
+            "synonyms": [
+              "Scientific journal"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "holds",
+            "domain": "Institution",
+            "range": "Collection",
+            "description": "Indicates that an institution holds or maintains a collection"
+          },
+          {
+            "label": "includes",
+            "domain": "Collection",
+            "range": "Type specimen",
+            "description": "Indicates that a collection includes specific type specimens"
+          },
+          {
+            "label": "published in",
+            "domain": "Type specimen",
+            "range": "Journal",
+            "description": "Indicates that a type specimen is published in a specific journal"
+          }
+        ]
+      },
+      "CQ4": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ4",
+        "cq_title": "Taxonomic Distribution",
+        "question": "How are the type specimens published in the journal distributed across taxonomic groups (e.g., family, genus, species)?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen designated as representative of a species or other taxon",
+            "synonyms": [
+              "Holotype",
+              "Paratype"
+            ]
+          },
+          {
+            "label": "Taxonomic Group",
+            "description": "A hierarchical category used in biological classification such as family, genus, or species",
+            "synonyms": [
+              "Taxon",
+              "Classification Rank"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "A periodical publication where scientific research is published",
+            "synonyms": [
+              "Scientific Journal",
+              "Publication"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "isPublishedIn",
+            "domain": "Type Specimen",
+            "range": "Journal",
+            "description": "Indicates the journal where the type specimen was published"
+          },
+          {
+            "label": "belongsToTaxonomicGroup",
+            "domain": "Type Specimen",
+            "range": "Taxonomic Group",
+            "description": "Links a type specimen to its taxonomic group"
+          }
+        ]
+      },
+      "CQ5": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ5",
+        "cq_title": "Geographic Distribution",
+        "question": "How are the type specimens published in the journal distributed geographically according to collection localities or gathering sites?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen on which the description and name of a new species is based",
+            "synonyms": [
+              "Holotype",
+              "Paratype",
+              "Syntype"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "A periodical publication in which scientific articles are published",
+            "synonyms": [
+              "Scientific Journal",
+              "Publication"
+            ]
+          },
+          {
+            "label": "Collection Locality",
+            "description": "The specific geographic location where a specimen was collected",
+            "synonyms": [
+              "Gathering Site",
+              "Collection Site"
+            ]
+          },
+          {
+            "label": "Geographic Distribution",
+            "description": "The spatial arrangement or spread of specimens across geographic locations",
+            "synonyms": [
+              "Spatial Distribution",
+              "Geographic Range"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "isPublishedIn",
+            "domain": "Type Specimen",
+            "range": "Journal",
+            "description": "Links a type specimen to the journal where it is published"
+          },
+          {
+            "label": "hasCollectionLocality",
+            "domain": "Type Specimen",
+            "range": "Collection Locality",
+            "description": "Specifies the geographic location where the specimen was collected"
+          },
+          {
+            "label": "hasGeographicDistribution",
+            "domain": "Type Specimen",
+            "range": "Geographic Distribution",
+            "description": "Indicates the geographic distribution of the specimen"
+          }
+        ]
+      },
+      "CQ6": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ6",
+        "cq_title": "Relevant Publications and Catalogues",
+        "question": "Which publications in the journal contain type specimen information, and which publications can be identified as type specimen catalogues?",
+        "concepts": [
+          {
+            "label": "Publication",
+            "description": "A documented work published in the journal",
+            "synonyms": [
+              "Article",
+              "Paper"
+            ]
+          },
+          {
+            "label": "Type Specimen Information",
+            "description": "Data or details about a type specimen included within a publication",
+            "synonyms": [
+              "Type Specimen Data"
+            ]
+          },
+          {
+            "label": "Type Specimen Catalogue",
+            "description": "A publication that serves as a catalogue listing type specimens",
+            "synonyms": [
+              "Type Catalogue"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "contains",
+            "domain": "Publication",
+            "range": "Type Specimen Information",
+            "description": "Indicates that a publication includes type specimen information"
+          },
+          {
+            "label": "isIdentifiedAs",
+            "domain": "Publication",
+            "range": "Type Specimen Catalogue",
+            "description": "Indicates that a publication is classified as a type specimen catalogue"
+          }
+        ]
+      },
+      "CQ7": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ7",
+        "cq_title": "Publication Context",
+        "question": "In which publications and publication sections is information on a specific type specimen reported?",
+        "concepts": [
+          {
+            "label": "Publication",
+            "description": "A published work such as a journal or book",
+            "synonyms": [
+              "Published work"
+            ]
+          },
+          {
+            "label": "Publication Section",
+            "description": "A section or part within a publication",
+            "synonyms": [
+              "Section",
+              "Publication part"
+            ]
+          },
+          {
+            "label": "Type Specimen",
+            "description": "A specimen used as the reference for a species or subspecies",
+            "synonyms": [
+              "Type"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is reported in",
+            "domain": "Type Specimen",
+            "range": "Publication Section",
+            "description": "Indicates the publication section where the type specimen information is reported"
+          },
+          {
+            "label": "is part of",
+            "domain": "Publication Section",
+            "range": "Publication",
+            "description": "Indicates which publication a publication section belongs to"
+          }
+        ]
+      },
+      "CQ8": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ8",
+        "cq_title": "Major Contributors",
+        "question": "Which publications contribute the largest number of type specimen records to the journal?",
+        "concepts": [
+          {
+            "label": "Publication",
+            "description": "A published work contributing information to the journal",
+            "synonyms": [
+              "Article",
+              "Paper"
+            ]
+          },
+          {
+            "label": "Type Specimen Record",
+            "description": "A documented instance of a type specimen associated with a publication",
+            "synonyms": [
+              "Type Specimen Entry"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "A periodical publication in which articles are published",
+            "synonyms": [
+              "Zoological Journal"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "contributes",
+            "domain": "Publication",
+            "range": "Type Specimen Record",
+            "description": "Indicates that a publication provides type specimen records"
+          },
+          {
+            "label": "published_in",
+            "domain": "Publication",
+            "range": "Journal",
+            "description": "Specifies the journal where the publication appears"
+          }
+        ]
+      },
+      "CQ9": {
+        "user_story": "Chief Editor of a Zoological Journal",
+        "cq_id": "CQ9",
+        "cq_title": "Temporal Trends",
+        "question": "How has the publication of type specimen information changed over time within the journal?",
+        "concepts": [
+          {
+            "label": "Publication",
+            "description": "An instance of disseminating scientific information through the journal",
+            "synonyms": [
+              "Article",
+              "Paper"
+            ]
+          },
+          {
+            "label": "Type Specimen Information",
+            "description": "Data or details about a type specimen used for taxonomic reference",
+            "synonyms": [
+              "Type Specimen Data"
+            ]
+          },
+          {
+            "label": "Time",
+            "description": "A temporal point or period during which publications occur",
+            "synonyms": [
+              "Date",
+              "Year"
+            ]
+          },
+          {
+            "label": "Journal",
+            "description": "The zoological journal in which publications appear",
+            "synonyms": [
+              "Scientific Journal"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasPublicationDate",
+            "domain": "Publication",
+            "range": "Time",
+            "description": "The date or time period when the publication was made"
+          },
+          {
+            "label": "containsTypeSpecimenInformation",
+            "domain": "Publication",
+            "range": "Type Specimen Information",
+            "description": "Indicates that the publication includes type specimen data"
+          },
+          {
+            "label": "publishedIn",
+            "domain": "Publication",
+            "range": "Journal",
+            "description": "The journal where the publication appears"
+          }
+        ]
+      }
+    },
+    "Collection Manager": {
+      "CQ1": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ1",
+        "cq_title": "Type Specimen Documentation",
+        "question": "Which type specimens are documented in the available type specimen catalogues and publications, and what information is available for them?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as the reference point for the identification and naming of a species",
+            "synonyms": [
+              "Type"
+            ]
+          },
+          {
+            "label": "Catalogue",
+            "description": "A systematic list of type specimens documented",
+            "synonyms": [
+              "Catalogue of Type Specimens",
+              "Specimen Catalogue"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A documented source such as a book or article containing information about type specimens",
+            "synonyms": [
+              "Document",
+              "Article",
+              "Book"
+            ]
+          },
+          {
+            "label": "Information",
+            "description": "Data or details available about type specimens in catalogues and publications",
+            "synonyms": [
+              "Data",
+              "Details"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is documented in",
+            "domain": "Type Specimen",
+            "range": "Catalogue",
+            "description": "Indicates that a type specimen is recorded in a catalogue"
+          },
+          {
+            "label": "is documented in",
+            "domain": "Type Specimen",
+            "range": "Publication",
+            "description": "Indicates that a type specimen is recorded in a publication"
+          },
+          {
+            "label": "has information",
+            "domain": "Type Specimen",
+            "range": "Information",
+            "description": "Associates a type specimen with available data or details"
+          }
+        ]
+      },
+      "CQ2": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ2",
+        "cq_title": "Available Catalogues and Publications",
+        "question": "Which type specimen catalogues and publications are available for my institution or collection?",
+        "concepts": [
+          {
+            "label": "Type specimen catalogue",
+            "description": "A catalogue documenting type specimens",
+            "synonyms": [
+              "Type catalogue"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A published document or work",
+            "synonyms": [
+              "Publication"
+            ]
+          },
+          {
+            "label": "Institution",
+            "description": "An organization or establishment managing collections",
+            "synonyms": [
+              "Organization",
+              "Establishment"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A group of specimens or items curated by an institution",
+            "synonyms": [
+              "Specimen collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is available for",
+            "domain": "Type specimen catalogue",
+            "range": "Institution",
+            "description": "Indicates the institution for which the catalogue is available"
+          },
+          {
+            "label": "is available for",
+            "domain": "Publication",
+            "range": "Institution",
+            "description": "Indicates the institution for which the publication is available"
+          },
+          {
+            "label": "is available for",
+            "domain": "Type specimen catalogue",
+            "range": "Collection",
+            "description": "Indicates the collection for which the catalogue is available"
+          },
+          {
+            "label": "is available for",
+            "domain": "Publication",
+            "range": "Collection",
+            "description": "Indicates the collection for which the publication is available"
+          }
+        ]
+      },
+      "CQ3": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ3",
+        "cq_title": "Specialist Contributions",
+        "question": "Which authors or specialists have documented type specimens from my collection?",
+        "concepts": [
+          {
+            "label": "Author",
+            "description": "An individual who has written or documented scientific work",
+            "synonyms": [
+              "specialist",
+              "researcher"
+            ]
+          },
+          {
+            "label": "Type specimen",
+            "description": "A specimen that serves as a reference point for a species or taxon",
+            "synonyms": [
+              "type"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A set of specimens gathered and curated together",
+            "synonyms": [
+              "specimen collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "documents",
+            "domain": "Author",
+            "range": "Type specimen",
+            "description": "Indicates that an author has documented a type specimen"
+          },
+          {
+            "label": "belongs to",
+            "domain": "Type specimen",
+            "range": "Collection",
+            "description": "Indicates that a type specimen is part of a specific collection"
+          }
+        ]
+      },
+      "CQ4": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ4",
+        "cq_title": "Relevant Publications",
+        "question": "Which publications provide information about a particular type specimen or group of type specimens?",
+        "concepts": [
+          {
+            "label": "Publication",
+            "description": "A document or work that provides information",
+            "synonyms": [
+              "Document",
+              "Article",
+              "Paper"
+            ]
+          },
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as a reference point for a species or taxon",
+            "synonyms": [
+              "Reference Specimen"
+            ]
+          },
+          {
+            "label": "Group of Type Specimens",
+            "description": "A collection or set of type specimens",
+            "synonyms": [
+              "Specimen Group"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "provides information about",
+            "domain": "Publication",
+            "range": "Type Specimen",
+            "description": "Indicates that a publication contains information about a type specimen"
+          },
+          {
+            "label": "provides information about",
+            "domain": "Publication",
+            "range": "Group of Type Specimens",
+            "description": "Indicates that a publication contains information about a group of type specimens"
+          }
+        ]
+      },
+      "CQ5": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ5",
+        "cq_title": "Metadata Availability",
+        "question": "Which metadata elements (e.g., taxonomy, locality, collector, identifiers, repository information, references, images) are documented for type specimens in the available catalogues and publications?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen designated as the representative example of a species or subspecies",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Taxonomy",
+            "description": "Classification information of an organism",
+            "synonyms": [
+              "Classification"
+            ]
+          },
+          {
+            "label": "Locality",
+            "description": "Geographical location where the specimen was collected",
+            "synonyms": [
+              "Collection Location"
+            ]
+          },
+          {
+            "label": "Collector",
+            "description": "Person who collected the specimen",
+            "synonyms": [
+              "Collector Person"
+            ]
+          },
+          {
+            "label": "Identifier",
+            "description": "Unique identifier assigned to the specimen",
+            "synonyms": [
+              "Specimen Identifier"
+            ]
+          },
+          {
+            "label": "Repository",
+            "description": "Institution or place where the specimen is stored",
+            "synonyms": [
+              "Collection Repository"
+            ]
+          },
+          {
+            "label": "Reference",
+            "description": "Publication or source documenting the specimen",
+            "synonyms": [
+              "Publication"
+            ]
+          },
+          {
+            "label": "Image",
+            "description": "Visual representation of the specimen",
+            "synonyms": [
+              "Photograph",
+              "Picture"
+            ]
+          },
+          {
+            "label": "Catalogue",
+            "description": "List or register of specimens available",
+            "synonyms": [
+              "Specimen Catalogue"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "Document or work where specimen metadata is published",
+            "synonyms": [
+              "Document"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasTaxonomy",
+            "domain": "Type Specimen",
+            "range": "Taxonomy",
+            "description": "Links a type specimen to its taxonomic classification"
+          },
+          {
+            "label": "hasLocality",
+            "domain": "Type Specimen",
+            "range": "Locality",
+            "description": "Indicates the geographical location of specimen collection"
+          },
+          {
+            "label": "collectedBy",
+            "domain": "Type Specimen",
+            "range": "Collector",
+            "description": "Identifies the person who collected the specimen"
+          },
+          {
+            "label": "hasIdentifier",
+            "domain": "Type Specimen",
+            "range": "Identifier",
+            "description": "Assigns a unique identifier to the specimen"
+          },
+          {
+            "label": "storedIn",
+            "domain": "Type Specimen",
+            "range": "Repository",
+            "description": "Specifies the repository where the specimen is kept"
+          },
+          {
+            "label": "documentedIn",
+            "domain": "Type Specimen",
+            "range": "Catalogue",
+            "description": "Indicates the catalogue that documents the specimen"
+          },
+          {
+            "label": "documentedInPublication",
+            "domain": "Type Specimen",
+            "range": "Publication",
+            "description": "Specifies the publication documenting the specimen"
+          },
+          {
+            "label": "hasReference",
+            "domain": "Type Specimen",
+            "range": "Reference",
+            "description": "Links the specimen to references or sources"
+          },
+          {
+            "label": "hasImage",
+            "domain": "Type Specimen",
+            "range": "Image",
+            "description": "Associates visual representations with the specimen"
+          }
+        ]
+      },
+      "CQ6": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ6",
+        "cq_title": "Documentation Completeness",
+        "question": "Which type specimens have the most comprehensive documentation across catalogues and publications?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen designated as the representative example of a species or subspecies",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Documentation",
+            "description": "Recorded information related to a specimen",
+            "synonyms": [
+              "Record",
+              "Data"
+            ]
+          },
+          {
+            "label": "Catalogue",
+            "description": "A systematic list or record of specimens",
+            "synonyms": [
+              "Collection Catalogue"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A published work containing scientific information",
+            "synonyms": [
+              "Article",
+              "Paper"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasDocumentationIn",
+            "domain": "Type Specimen",
+            "range": "Documentation",
+            "description": "Links a type specimen to its documentation"
+          },
+          {
+            "label": "documentedInCatalogue",
+            "domain": "Documentation",
+            "range": "Catalogue",
+            "description": "Indicates that documentation is recorded in a catalogue"
+          },
+          {
+            "label": "documentedInPublication",
+            "domain": "Documentation",
+            "range": "Publication",
+            "description": "Indicates that documentation is recorded in a publication"
+          },
+          {
+            "label": "documentationCompletenessScore",
+            "domain": "Type Specimen",
+            "range": "Literal",
+            "description": "A measure of how comprehensive the documentation is for a type specimen"
+          }
+        ]
+      },
+      "CQ7": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ7",
+        "cq_title": "Catalogue Coverage",
+        "question": "Which type specimen catalogues provide the most comprehensive documentation for a collection, taxonomic group, or set of type specimens?",
+        "concepts": [
+          {
+            "label": "Type Specimen Catalogue",
+            "description": "A catalogue documenting type specimens",
+            "synonyms": [
+              "Specimen Catalogue"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A group or assembly of specimens or items",
+            "synonyms": []
+          },
+          {
+            "label": "Taxonomic Group",
+            "description": "A classification group of organisms sharing common characteristics",
+            "synonyms": [
+              "Taxon"
+            ]
+          },
+          {
+            "label": "Type Specimen",
+            "description": "A specimen on which the description and name of a new species is based",
+            "synonyms": [
+              "Type"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "provides documentation for",
+            "domain": "Type Specimen Catalogue",
+            "range": "Collection",
+            "description": "Indicates that a catalogue documents a collection"
+          },
+          {
+            "label": "provides documentation for",
+            "domain": "Type Specimen Catalogue",
+            "range": "Taxonomic Group",
+            "description": "Indicates that a catalogue documents a taxonomic group"
+          },
+          {
+            "label": "provides documentation for",
+            "domain": "Type Specimen Catalogue",
+            "range": "Type Specimen",
+            "description": "Indicates that a catalogue documents type specimens"
+          },
+          {
+            "label": "documentation comprehensiveness",
+            "domain": "Type Specimen Catalogue",
+            "range": "Literal",
+            "description": "Degree to which the catalogue covers documentation"
+          }
+        ]
+      },
+      "CQ8": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ8",
+        "cq_title": "Multiple Documentation Sources",
+        "question": "Which type specimens are documented by multiple catalogues or publications?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen designated as the representative example of a species",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Catalogue",
+            "description": "A published list or record of specimens",
+            "synonyms": [
+              "Catalogue Publication",
+              "Catalogue Record"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A document that provides information about specimens",
+            "synonyms": [
+              "Document",
+              "Reference"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "isDocumentedBy",
+            "domain": "Type Specimen",
+            "range": "Publication",
+            "description": "Indicates that a type specimen is documented by a publication or catalogue"
+          }
+        ]
+      },
+      "CQ9": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ9",
+        "cq_title": "Historical Changes in Documentation",
+        "question": "How has the information available for a particular type specimen changed across catalogues and publications over time?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen designated as the representative example of a species or subspecies",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Catalogue",
+            "description": "A systematic list or record of specimens or items",
+            "synonyms": [
+              "Catalog"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A published document containing information about specimens",
+            "synonyms": [
+              "Document"
+            ]
+          },
+          {
+            "label": "Information",
+            "description": "Data or details about a specimen",
+            "synonyms": [
+              "Data",
+              "Details"
+            ]
+          },
+          {
+            "label": "Time",
+            "description": "The chronological context or period over which changes occur",
+            "synonyms": [
+              "Date",
+              "Temporal Context"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasInformation",
+            "domain": "Type Specimen",
+            "range": "Information",
+            "description": "Associates a specimen with its available information"
+          },
+          {
+            "label": "isRecordedIn",
+            "domain": "Information",
+            "range": "Catalogue",
+            "description": "Indicates the catalogue where the information is recorded"
+          },
+          {
+            "label": "isPublishedIn",
+            "domain": "Information",
+            "range": "Publication",
+            "description": "Indicates the publication where the information is documented"
+          },
+          {
+            "label": "hasTemporalContext",
+            "domain": "Information",
+            "range": "Time",
+            "description": "Specifies the time period when the information was available or recorded"
+          },
+          {
+            "label": "changesOverTime",
+            "domain": "Information",
+            "range": "Information",
+            "description": "Represents the change or difference in information across time"
+          }
+        ]
+      },
+      "CQ10": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ10",
+        "cq_title": "Identifiers and External Resources",
+        "question": "Which type specimens have associated identifiers, collection numbers, or links to external resources?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as a reference point for the definition of a species",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Identifier",
+            "description": "A unique reference assigned to an entity",
+            "synonyms": [
+              "ID"
+            ]
+          },
+          {
+            "label": "Collection Number",
+            "description": "A number assigned to a specimen within a collection",
+            "synonyms": []
+          },
+          {
+            "label": "External Resource",
+            "description": "A resource outside the current system linked to an entity",
+            "synonyms": [
+              "External Link",
+              "External Reference"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "has Identifier",
+            "domain": "Type Specimen",
+            "range": "Identifier",
+            "description": "Associates a type specimen with its unique identifier"
+          },
+          {
+            "label": "has Collection Number",
+            "domain": "Type Specimen",
+            "range": "Collection Number",
+            "description": "Associates a type specimen with its collection number"
+          },
+          {
+            "label": "has External Resource",
+            "domain": "Type Specimen",
+            "range": "External Resource",
+            "description": "Links a type specimen to an external resource"
+          }
+        ]
+      },
+      "CQ11": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ11",
+        "cq_title": "Richly Connected Specimens",
+        "question": "Which type specimens are associated with the richest network of linked information, such as publications, taxonomic names, institutions, collectors, localities, and identifiers?",
+        "concepts": [
+          {
+            "label": "Type specimen",
+            "description": "A specimen serving as a reference point for a taxonomic name",
+            "synonyms": [
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A document where scientific information is formally published",
+            "synonyms": [
+              "Article",
+              "Paper"
+            ]
+          },
+          {
+            "label": "Taxonomic name",
+            "description": "A scientific name assigned to a taxon",
+            "synonyms": [
+              "Scientific name"
+            ]
+          },
+          {
+            "label": "Institution",
+            "description": "An organization that houses or manages specimens",
+            "synonyms": [
+              "Museum",
+              "Repository"
+            ]
+          },
+          {
+            "label": "Collector",
+            "description": "A person who collected the specimen",
+            "synonyms": [
+              "Gatherer"
+            ]
+          },
+          {
+            "label": "Locality",
+            "description": "The geographic location where the specimen was collected",
+            "synonyms": [
+              "Location",
+              "Place"
+            ]
+          },
+          {
+            "label": "Identifier",
+            "description": "A unique code or number assigned to a specimen or record",
+            "synonyms": [
+              "ID",
+              "Accession number"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is associated with",
+            "domain": "Type specimen",
+            "range": "Publication",
+            "description": "Links a specimen to relevant publications"
+          },
+          {
+            "label": "has taxonomic name",
+            "domain": "Type specimen",
+            "range": "Taxonomic name",
+            "description": "Specifies the taxonomic name assigned to the specimen"
+          },
+          {
+            "label": "is housed in",
+            "domain": "Type specimen",
+            "range": "Institution",
+            "description": "Indicates the institution where the specimen is stored"
+          },
+          {
+            "label": "collected by",
+            "domain": "Type specimen",
+            "range": "Collector",
+            "description": "Identifies the person who collected the specimen"
+          },
+          {
+            "label": "collected at",
+            "domain": "Type specimen",
+            "range": "Locality",
+            "description": "Specifies the location where the specimen was collected"
+          },
+          {
+            "label": "has identifier",
+            "domain": "Type specimen",
+            "range": "Identifier",
+            "description": "Assigns a unique identifier to the specimen"
+          }
+        ]
+      },
+      "CQ12": {
+        "user_story": "Collection Manager",
+        "cq_id": "CQ12",
+        "cq_title": "Information Diversity and Coverage",
+        "question": "How does the amount and diversity of information available for type specimens vary across catalogues and publications?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as the reference point for the identification and naming of a species",
+            "synonyms": [
+              "Holotype",
+              "Paratype"
+            ]
+          },
+          {
+            "label": "Information",
+            "description": "Data or details available about a subject",
+            "synonyms": [
+              "Data",
+              "Details"
+            ]
+          },
+          {
+            "label": "Catalogue",
+            "description": "A systematic list or record of items, such as specimens or publications",
+            "synonyms": [
+              "Catalog"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "A published work containing information or data",
+            "synonyms": [
+              "Article",
+              "Paper",
+              "Document"
+            ]
+          },
+          {
+            "label": "Diversity",
+            "description": "Variety or range of different types or kinds",
+            "synonyms": [
+              "Variety",
+              "Range"
+            ]
+          },
+          {
+            "label": "Amount",
+            "description": "Quantity or volume of information",
+            "synonyms": [
+              "Quantity",
+              "Volume"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasInformationAmount",
+            "domain": "Type Specimen",
+            "range": "Amount",
+            "description": "The quantity of information available for a type specimen"
+          },
+          {
+            "label": "hasInformationDiversity",
+            "domain": "Type Specimen",
+            "range": "Diversity",
+            "description": "The variety of information types available for a type specimen"
+          },
+          {
+            "label": "isDocumentedIn",
+            "domain": "Type Specimen",
+            "range": "Catalogue",
+            "description": "The catalogue in which the type specimen is listed"
+          },
+          {
+            "label": "isPublishedIn",
+            "domain": "Type Specimen",
+            "range": "Publication",
+            "description": "The publication in which information about the type specimen is available"
+          }
+        ]
+      }
+    },
+    "Scientific Head of Collection": {
+      "CQ1": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ1",
+        "cq_title": "Type Specimen Inventory",
+        "question": "Which type specimens are documented in the collection?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen designated as the representative example of a species or subspecies.",
+            "synonyms": [
+              "Type Material"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "An assembly of specimens held together for scientific study or reference.",
+            "synonyms": [
+              "Specimen Collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is documented in",
+            "domain": "Type Specimen",
+            "range": "Collection",
+            "description": "Indicates that a type specimen is recorded or held within a specific collection."
+          }
+        ]
+      },
+      "CQ2": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ2",
+        "cq_title": "Type Specimen Quantification",
+        "question": "How many type specimens exist in the collection?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as a reference point for a species or subspecies",
+            "synonyms": [
+              "Type Material"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A set of specimens gathered and maintained for study or reference",
+            "synonyms": [
+              "Specimen Collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "existsIn",
+            "domain": "Type Specimen",
+            "range": "Collection",
+            "description": "Indicates that a type specimen is part of a specific collection"
+          }
+        ]
+      },
+      "CQ3": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ3",
+        "cq_title": "Taxonomic Distribution",
+        "question": "How are type specimens distributed across taxonomic groups?",
+        "concepts": [
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as the reference point for the definition of a species or taxon",
+            "synonyms": [
+              "Type Example",
+              "Reference Specimen"
+            ]
+          },
+          {
+            "label": "Taxonomic Group",
+            "description": "A group of organisms classified together based on shared characteristics",
+            "synonyms": [
+              "Taxon",
+              "Taxonomic Category"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is distributed across",
+            "domain": "Type Specimen",
+            "range": "Taxonomic Group",
+            "description": "Indicates the taxonomic groups in which type specimens are found"
+          }
+        ]
+      },
+      "CQ4": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ4",
+        "cq_title": "Collection Strengths by Taxon",
+        "question": "Which taxonomic groups are best represented in the collection?",
+        "concepts": [
+          {
+            "label": "Taxonomic Group",
+            "description": "A category of organisms classified in taxonomy such as genus, family, or order",
+            "synonyms": [
+              "Taxon",
+              "Taxonomic Category"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "An assemblage of specimens or items held for scientific purposes",
+            "synonyms": [
+              "Specimen Collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is represented by",
+            "domain": "Collection",
+            "range": "Taxonomic Group",
+            "description": "Indicates the taxonomic groups that are represented within a collection"
+          },
+          {
+            "label": "representation strength",
+            "domain": "Taxonomic Group",
+            "range": "Quantity",
+            "description": "The degree or extent to which a taxonomic group is represented in the collection"
+          }
+        ]
+      },
+      "CQ5": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ5",
+        "cq_title": "Geographic Coverage",
+        "question": "What geographic regions are represented by the collection’s type specimens?",
+        "concepts": [
+          {
+            "label": "Geographic region",
+            "description": "A defined area or location on the Earth's surface",
+            "synonyms": [
+              "location",
+              "area",
+              "region"
+            ]
+          },
+          {
+            "label": "Type specimen",
+            "description": "A specimen on which the description and name of a new species is based",
+            "synonyms": [
+              "holotype",
+              "reference specimen"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "An assembled group of specimens or items",
+            "synonyms": [
+              "specimen collection",
+              "repository"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "is represented by",
+            "domain": "Collection",
+            "range": "Geographic region",
+            "description": "Indicates the geographic regions represented within a collection"
+          },
+          {
+            "label": "has type specimen",
+            "domain": "Collection",
+            "range": "Type specimen",
+            "description": "Indicates that the collection includes a particular type specimen"
+          },
+          {
+            "label": "originates from",
+            "domain": "Type specimen",
+            "range": "Geographic region",
+            "description": "Specifies the geographic region from which a type specimen was collected"
+          }
+        ]
+      },
+      "CQ6": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ6",
+        "cq_title": "Published Catalogues",
+        "question": "Which catalogues documenting the collection have been published?",
+        "concepts": [
+          {
+            "label": "Catalogue",
+            "description": "A systematic list or record documenting items in a collection",
+            "synonyms": [
+              "Catalog",
+              "Inventory"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A group of items or specimens gathered and maintained together",
+            "synonyms": [
+              "Holdings",
+              "Assemblage"
+            ]
+          },
+          {
+            "label": "Publication",
+            "description": "The act or instance of making a document publicly available",
+            "synonyms": [
+              "Published work",
+              "Issue"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "documents",
+            "domain": "Catalogue",
+            "range": "Collection",
+            "description": "Indicates which collection is documented by the catalogue"
+          },
+          {
+            "label": "hasPublicationStatus",
+            "domain": "Catalogue",
+            "range": "Publication",
+            "description": "Indicates whether the catalogue has been published"
+          }
+        ]
+      },
+      "CQ7": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ7",
+        "cq_title": "Specialist Contributions",
+        "question": "Which specialists have documented or studied the collection’s type specimens?",
+        "concepts": [
+          {
+            "label": "Specialist",
+            "description": "A person with expertise who documents or studies specimens",
+            "synonyms": [
+              "expert",
+              "researcher"
+            ]
+          },
+          {
+            "label": "Type Specimen",
+            "description": "A specimen that serves as the reference point for a species or taxon",
+            "synonyms": [
+              "reference specimen"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "An assembled group of specimens maintained together",
+            "synonyms": [
+              "specimen collection"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "has documented",
+            "domain": "Specialist",
+            "range": "Type Specimen",
+            "description": "Indicates that the specialist has documented the type specimen"
+          },
+          {
+            "label": "has studied",
+            "domain": "Specialist",
+            "range": "Type Specimen",
+            "description": "Indicates that the specialist has studied the type specimen"
+          },
+          {
+            "label": "is part of",
+            "domain": "Type Specimen",
+            "range": "Collection",
+            "description": "Indicates that the type specimen belongs to a collection"
+          }
+        ]
+      },
+      "CQ8": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ8",
+        "cq_title": "Historical Interpretation",
+        "question": "How has the scientific interpretation of the collection changed over time?",
+        "concepts": [
+          {
+            "label": "Scientific Interpretation",
+            "description": "An explanation or understanding of the collection based on scientific analysis",
+            "synonyms": [
+              "Scientific Analysis",
+              "Scientific Explanation"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A set of items gathered and maintained for study or display",
+            "synonyms": [
+              "Collection Item",
+              "Specimen"
+            ]
+          },
+          {
+            "label": "Time",
+            "description": "A point or period when an event occurs",
+            "synonyms": [
+              "Date",
+              "Period"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasInterpretationAtTime",
+            "domain": "Collection",
+            "range": "Scientific Interpretation",
+            "description": "Links a collection to its scientific interpretation at a specific time"
+          },
+          {
+            "label": "changedOverTime",
+            "domain": "Scientific Interpretation",
+            "range": "Time",
+            "description": "Indicates that the scientific interpretation has evolved or changed during different times"
+          }
+        ]
+      },
+      "CQ9": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ9",
+        "cq_title": "Collection Development",
+        "question": "How has the collection developed throughout its history?",
+        "concepts": [
+          {
+            "label": "Collection",
+            "description": "A group of items or specimens gathered and maintained",
+            "synonyms": [
+              "Assemblage",
+              "Compilation"
+            ]
+          },
+          {
+            "label": "Development",
+            "description": "The process of growth or change over time",
+            "synonyms": [
+              "Evolution",
+              "Progression"
+            ]
+          },
+          {
+            "label": "History",
+            "description": "The record of past events related to the collection",
+            "synonyms": [
+              "Chronology",
+              "Background"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "hasDevelopment",
+            "domain": "Collection",
+            "range": "Development",
+            "description": "Indicates the development process of the collection"
+          },
+          {
+            "label": "hasHistory",
+            "domain": "Collection",
+            "range": "History",
+            "description": "Relates the collection to its historical record"
+          }
+        ]
+      },
+      "CQ10": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ10",
+        "cq_title": "Collection Strength Assessment",
+        "question": "What are the principal scientific strengths of the collection?",
+        "concepts": [
+          {
+            "label": "Collection",
+            "description": "A set of items or specimens gathered and maintained.",
+            "synonyms": [
+              "Specimen collection",
+              "Repository"
+            ]
+          },
+          {
+            "label": "Scientific strength",
+            "description": "A key area of scientific expertise or notable quality related to the collection.",
+            "synonyms": [
+              "Scientific excellence",
+              "Research strength"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "has scientific strength",
+            "domain": "Collection",
+            "range": "Scientific strength",
+            "description": "Indicates a principal scientific strength associated with a collection."
+          }
+        ]
+      },
+      "CQ11": {
+        "user_story": "Scientific Head of Collection",
+        "cq_id": "CQ11",
+        "cq_title": "Knowledge Contribution of Catalogues",
+        "question": "Which catalogues contribute the most knowledge and documentation about the collection?",
+        "concepts": [
+          {
+            "label": "Catalogue",
+            "description": "A systematic list or record providing information about items in a collection",
+            "synonyms": [
+              "Catalog"
+            ]
+          },
+          {
+            "label": "Knowledge",
+            "description": "Information and understanding about the collection",
+            "synonyms": []
+          },
+          {
+            "label": "Documentation",
+            "description": "Recorded information that provides evidence or details about the collection",
+            "synonyms": [
+              "Records"
+            ]
+          },
+          {
+            "label": "Collection",
+            "description": "A group of related items gathered and maintained for study or reference",
+            "synonyms": [
+              "Collection of items"
+            ]
+          }
+        ],
+        "properties": [
+          {
+            "label": "contributesKnowledge",
+            "domain": "Catalogue",
+            "range": "Knowledge",
+            "description": "Indicates the knowledge provided by a catalogue about the collection"
+          },
+          {
+            "label": "contributesDocumentation",
+            "domain": "Catalogue",
+            "range": "Documentation",
+            "description": "Indicates the documentation provided by a catalogue about the collection"
+          },
+          {
+            "label": "isAbout",
+            "domain": "Catalogue",
+            "range": "Collection",
+            "description": "Relates a catalogue to the collection it describes"
+          }
+        ]
+      }
+    }
+  }
+}
