@@ -12,9 +12,18 @@ def read_prompts_from_file(path: Path) -> List[str]:
     if not content:
         return []
 
-    # Split by blank lines so multi-line prompts are preserved.
-    chunks = [chunk.strip() for chunk in content.split("\n\n")]
-    return [chunk for chunk in chunks if chunk]
+    prompts = []
+    for line in content.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            obj = json.loads(line)
+            prompts.append(obj["prompt"])
+        except (json.JSONDecodeError, KeyError):
+            # Fallback: plain text line
+            prompts.append(line)
+    return prompts
 
 
 def collect_prompts(inline_prompts: List[str], prompt_files: List[str]) -> List[str]:

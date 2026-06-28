@@ -13,40 +13,54 @@
         "question": "Which subjective junior synonyms have been reported for a given species within a specified geographic region?",
         "concepts": [
           {
-            "label": "Species",
-            "description": "A group of organisms capable of interbreeding and producing fertile offspring",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Taxon"
+              "species",
+              "taxonomic group"
             ]
           },
           {
-            "label": "Subjective junior synonym",
-            "description": "A later name considered to refer to the same taxon as an earlier name based on taxonomic opinion",
+            "label": "Location",
+            "description": "A place or area where an event or occurrence happens, such as a geographic region",
             "synonyms": [
-              "Junior synonym"
+              "geographic region",
+              "region"
             ]
           },
           {
-            "label": "Geographic region",
-            "description": "A defined area or location on Earth",
+            "label": "ResourceRelationship",
+            "description": "A relationship of one resource to another, such as synonymy between taxa",
             "synonyms": [
-              "Region",
-              "Location"
+              "taxonomic synonymy",
+              "taxon relationship"
             ]
           }
         ],
         "properties": [
           {
-            "label": "has subjective junior synonym",
-            "domain": "Species",
-            "range": "Subjective junior synonym",
-            "description": "Relates a species to its subjective junior synonyms"
+            "label": "acceptedNameUsage",
+            "domain": "Taxon",
+            "range": "Taxon",
+            "description": "The taxon that is accepted as the correct name; used to link synonyms to their accepted taxon"
           },
           {
-            "label": "reported in",
-            "domain": "Subjective junior synonym",
-            "range": "Geographic region",
-            "description": "Indicates the geographic region where the subjective junior synonym has been reported"
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The status of the taxon name, e.g., 'subjective junior synonym'"
+          },
+          {
+            "label": "higherGeography",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The higher geographic region that qualifies the location of the taxon"
+          },
+          {
+            "label": "locationID",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "An identifier for the geographic location"
           }
         ]
       },
@@ -57,54 +71,32 @@
         "question": "In which collection or institution is the type specimen of a given species deposited?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen used to define the species",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Holotype",
-              "Reference Specimen"
+              "species"
             ]
           },
           {
-            "label": "Species",
-            "description": "A group of organisms capable of interbreeding",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Taxon"
-            ]
-          },
-          {
-            "label": "Collection",
-            "description": "An organized set of specimens held for study",
-            "synonyms": [
-              "Specimen Collection"
-            ]
-          },
-          {
-            "label": "Institution",
-            "description": "An organization housing collections",
-            "synonyms": [
-              "Museum",
-              "Repository"
+              "type specimen"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is deposited in",
-            "domain": "Type Specimen",
-            "range": "Collection",
-            "description": "Indicates the collection where the type specimen is held"
+            "label": "institutionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Code for the institution in which the specimen is housed"
           },
           {
-            "label": "is held by",
-            "domain": "Collection",
-            "range": "Institution",
-            "description": "Indicates the institution responsible for the collection"
-          },
-          {
-            "label": "has type specimen",
-            "domain": "Species",
-            "range": "Type Specimen",
-            "description": "Links a species to its defining type specimen"
+            "label": "collectionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Code for the collection within the institution where the specimen is deposited"
           }
         ]
       },
@@ -115,54 +107,39 @@
         "question": "What photographs, DNA barcodes, or other digital resources are available for a given type specimen?",
         "concepts": [
           {
-            "label": "Type specimen",
-            "description": "A specimen designated as the reference for a species",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Photograph",
-            "description": "A digital image capturing the visual appearance of a specimen",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Image",
-              "Photo"
+              "digital resource container"
             ]
           },
           {
-            "label": "DNA barcode",
-            "description": "A short genetic sequence from a standardized region of the genome used for species identification",
+            "label": "NucleotideSequence",
+            "description": "A digital representation of a nucleotide sequence",
             "synonyms": [
-              "Genetic barcode"
-            ]
-          },
-          {
-            "label": "Digital resource",
-            "description": "Any digital data or media related to a specimen",
-            "synonyms": [
-              "Digital data",
-              "Digital media"
+              "DNA barcode"
             ]
           }
         ],
         "properties": [
           {
-            "label": "has digital resource",
-            "domain": "Type specimen",
-            "range": "Digital resource",
-            "description": "Associates a type specimen with digital resources available for it"
+            "label": "associatedMedia",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Identifiers or references to media resources such as photographs associated with the specimen"
           },
           {
-            "label": "is photograph of",
-            "domain": "Photograph",
-            "range": "Type specimen",
-            "description": "Indicates the specimen that is depicted in the photograph"
-          },
-          {
-            "label": "is DNA barcode of",
-            "domain": "DNA barcode",
-            "range": "Type specimen",
-            "description": "Indicates the specimen from which the DNA barcode was obtained"
+            "label": "associatedSequences",
+            "domain": "MaterialEntity",
+            "range": "NucleotideSequence",
+            "description": "Link to nucleotide sequences related to the specimen or material entity"
           }
         ]
       },
@@ -173,61 +150,46 @@
         "question": "How has the number of species descriptions changed over time, and what trends can be observed across different years or taxonomic groups?",
         "concepts": [
           {
-            "label": "Species Description",
-            "description": "A formal account or characterization of a species",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Species Account",
-              "Species Identification"
+              "Species",
+              "Taxonomic group"
             ]
           },
           {
-            "label": "Year",
-            "description": "A calendar year representing a point in time",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Calendar Year"
-            ]
-          },
-          {
-            "label": "Taxonomic Group",
-            "description": "A classification category grouping organisms based on shared characteristics",
-            "synonyms": [
-              "Taxon",
-              "Taxa"
-            ]
-          },
-          {
-            "label": "Trend",
-            "description": "A general direction or pattern of change over time",
-            "synonyms": [
-              "Pattern",
-              "Temporal Trend"
+              "Species description",
+              "Taxonomic identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasDescriptionYear",
-            "domain": "Species Description",
-            "range": "Year",
-            "description": "The year in which the species description was published"
+            "label": "eventDate",
+            "domain": "Identification",
+            "range": "xsd:date",
+            "description": "The date when the identification or species description was made"
           },
           {
-            "label": "belongsToTaxonomicGroup",
-            "domain": "Species Description",
-            "range": "Taxonomic Group",
-            "description": "The taxonomic group to which the species described belongs"
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
           },
           {
-            "label": "hasCount",
-            "domain": "Year",
-            "range": "integer",
-            "description": "The number of species descriptions recorded in that year"
+            "label": "taxonRank",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The taxonomic rank of the taxon (e.g. species, genus)"
           },
           {
-            "label": "exhibitsTrend",
-            "domain": "Taxonomic Group",
-            "range": "Trend",
-            "description": "The observed temporal pattern of species descriptions within the taxonomic group"
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The status of the taxon name, indicating its validity or acceptance"
           }
         ]
       },
@@ -238,41 +200,86 @@
         "question": "Where was the type specimen of a given species originally collected?",
         "concepts": [
           {
-            "label": "Type specimen",
-            "description": "A specimen used as the reference point when a species is first described",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Holotype",
-              "Type example"
+              "Species",
+              "Taxonomic group"
             ]
           },
           {
-            "label": "Species",
-            "description": "A group of organisms capable of interbreeding and producing fertile offspring",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Taxonomic species"
+              "Type specimen",
+              "Specimen"
             ]
           },
           {
-            "label": "Locality",
-            "description": "The geographic location where a specimen was collected",
+            "label": "Event",
+            "description": "An action or set of circumstances occurring at a Location during a period of time",
             "synonyms": [
-              "Collection site",
-              "Location"
+              "Collection event",
+              "Sampling event"
+            ]
+          },
+          {
+            "label": "Location",
+            "description": "A place or area where an Event occurs",
+            "synonyms": [
+              "Type locality",
+              "Collection locality"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasTypeSpecimen",
-            "domain": "Species",
-            "range": "Type specimen",
-            "description": "Associates a species with its type specimen"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the specimen as a type (e.g., holotype, paratype)"
           },
           {
-            "label": "collectedAt",
-            "domain": "Type specimen",
-            "range": "Locality",
-            "description": "Indicates the location where the type specimen was originally collected"
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "eventID",
+            "domain": "Event",
+            "range": "xsd:string",
+            "description": "An identifier for the collection event"
+          },
+          {
+            "label": "eventDate",
+            "domain": "Event",
+            "range": "xsd:date",
+            "description": "The date when the specimen was collected"
+          },
+          {
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The specific place where the specimen was collected"
+          },
+          {
+            "label": "decimalLatitude",
+            "domain": "Location",
+            "range": "xsd:decimal",
+            "description": "Latitude in decimal degrees"
+          },
+          {
+            "label": "decimalLongitude",
+            "domain": "Location",
+            "range": "xsd:decimal",
+            "description": "Longitude in decimal degrees"
           }
         ]
       },
@@ -283,42 +290,83 @@
         "question": "Which type specimens originate from a specified geographic region or island group?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen selected to serve as a reference point when a species is first described",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Reference Specimen",
-              "Holotype",
-              "Paratype"
+              "Type specimen"
             ]
           },
           {
-            "label": "Geographic Region",
-            "description": "A defined area of land or sea distinguished by geographic features",
+            "label": "Location",
+            "description": "A geographic place where an event or occurrence took place",
             "synonyms": [
-              "Region",
-              "Area"
+              "Geographic region",
+              "Island group"
             ]
           },
           {
-            "label": "Island Group",
-            "description": "A cluster of islands grouped together geographically",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Archipelago"
+              "Taxonomic identification"
+            ]
+          },
+          {
+            "label": "Occurrence",
+            "description": "An event that establishes the state of an organism at a place and time",
+            "synonyms": [
+              "Specimen occurrence"
             ]
           }
         ],
         "properties": [
           {
-            "label": "originates from",
-            "domain": "Type Specimen",
-            "range": "Geographic Region",
-            "description": "The geographic region where the type specimen was originally found"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the type specimen in the taxonomic identification"
           },
           {
-            "label": "originates from",
-            "domain": "Type Specimen",
-            "range": "Island Group",
-            "description": "The island group where the type specimen was originally found"
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence"
+          },
+          {
+            "label": "locationID",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "An identifier for the location"
+          },
+          {
+            "label": "higherGeography",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "A geographic region higher in the hierarchy than the locality"
+          },
+          {
+            "label": "islandGroup",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The name of an island group where the specimen was found"
+          },
+          {
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The specific place where the specimen was collected"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within a collection"
+          },
+          {
+            "label": "basisOfRecord",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The type of record, e.g., PreservedSpecimen"
           }
         ]
       },
@@ -329,42 +377,42 @@
         "question": "Who described a given species, and in which publication was it originally described?",
         "concepts": [
           {
-            "label": "Species",
-            "description": "A taxonomic group of organisms capable of interbreeding",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Taxon"
+              "species",
+              "taxonomic unit"
             ]
           },
           {
-            "label": "Person",
-            "description": "An individual who can describe species",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Author",
-              "Taxonomist"
+              "publication",
+              "original description"
             ]
           },
           {
-            "label": "Publication",
-            "description": "A document or work where species descriptions are published",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Article",
-              "Paper",
-              "Book"
+              "taxonomic identification",
+              "species description"
             ]
           }
         ],
         "properties": [
           {
-            "label": "describedBy",
-            "domain": "Species",
-            "range": "Person",
-            "description": "The person who described the species"
+            "label": "scientificNameAuthorship",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The person(s) who described the taxon"
           },
           {
-            "label": "originalDescriptionPublication",
-            "domain": "Species",
-            "range": "Publication",
-            "description": "The publication where the species was originally described"
+            "label": "namePublishedIn",
+            "domain": "Taxon",
+            "range": "MaterialCitation",
+            "description": "The publication in which the taxon was originally described"
           }
         ]
       },
@@ -375,48 +423,57 @@
         "question": "Which type specimens are held by a particular museum, institution, or collection?",
         "concepts": [
           {
-            "label": "Type specimen",
-            "description": "A specimen designated as the reference example of a species",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type sample"
+              "Type specimen"
             ]
           },
           {
-            "label": "Museum",
-            "description": "An institution that collects, preserves, and displays specimens",
-            "synonyms": []
-          },
-          {
-            "label": "Institution",
-            "description": "An organization that may hold collections or specimens",
-            "synonyms": []
-          },
-          {
-            "label": "Collection",
-            "description": "An assemblage of specimens held by a museum or institution",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Specimen collection"
+              "Specimen identification"
+            ]
+          },
+          {
+            "label": "Occurrence",
+            "description": "An event that establishes the state of an organism at a place and time",
+            "synonyms": [
+              "Specimen record"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is held by",
-            "domain": "Type specimen",
-            "range": "Museum",
-            "description": "Indicates the museum or institution that holds the type specimen"
+            "label": "collectionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The code for the collection from which the record was derived"
           },
           {
-            "label": "is held by",
-            "domain": "Type specimen",
-            "range": "Institution",
-            "description": "Indicates the institution that holds the type specimen"
+            "label": "institutionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The code for the institution or owner of the collection"
           },
           {
-            "label": "is held by",
-            "domain": "Type specimen",
-            "range": "Collection",
-            "description": "Indicates the collection that holds the type specimen"
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within the collection"
+          },
+          {
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type (e.g., holotype, paratype)"
+          },
+          {
+            "label": "basisOfRecord",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The specific nature of the data record (e.g., PreservedSpecimen)"
           }
         ]
       }
@@ -429,117 +486,108 @@
         "question": "Which type specimens are published or mentioned in the journal, and what associated metadata are available (e.g., hosting institution, institutional codes, specimen identifiers/PIDs, taxonomic information, locality, sex, and number of specimens)?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "An individual specimen designated as the type of a species or subspecies",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
+              "Published specimen reference",
+              "Specimen citation"
+            ]
+          },
+          {
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
+            "synonyms": [
+              "Type specimen",
               "Specimen"
             ]
           },
           {
-            "label": "Journal",
-            "description": "A periodical publication for scholarly articles",
+            "label": "Occurrence",
+            "description": "An event that establishes the state of an organism at a place and time",
             "synonyms": [
-              "Publication"
+              "Specimen occurrence",
+              "Collection event"
             ]
           },
           {
-            "label": "Institution",
-            "description": "An organization that hosts or holds specimens",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Hosting Institution"
+              "Taxonomic entity",
+              "Species or higher taxon"
             ]
           },
           {
-            "label": "Institutional Code",
-            "description": "A code identifying an institution",
+            "label": "Location",
+            "description": "A place with geographic coordinates and related information",
             "synonyms": [
-              "Institution Code"
+              "Locality",
+              "Geographic location"
             ]
           },
           {
-            "label": "Specimen Identifier",
-            "description": "A unique identifier assigned to a specimen",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "PID",
-              "Persistent Identifier"
-            ]
-          },
-          {
-            "label": "Taxonomic Information",
-            "description": "Classification details of a specimen in taxonomy",
-            "synonyms": [
-              "Taxonomy"
-            ]
-          },
-          {
-            "label": "Locality",
-            "description": "Geographic location where a specimen was collected",
-            "synonyms": [
-              "Collection Site",
-              "Location"
-            ]
-          },
-          {
-            "label": "Sex",
-            "description": "Biological sex of a specimen",
-            "synonyms": []
-          },
-          {
-            "label": "Number of Specimens",
-            "description": "Count of specimens",
-            "synonyms": [
-              "Specimen Count"
+              "Specimen identification",
+              "Taxonomic identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is published in",
-            "domain": "Type Specimen",
-            "range": "Journal",
-            "description": "Relates a type specimen to the journal where it is published or mentioned"
+            "label": "institutionCode",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Code for the institution that hosts the specimen"
           },
           {
-            "label": "has hosting institution",
-            "domain": "Type Specimen",
-            "range": "Institution",
-            "description": "Indicates the institution that hosts the specimen"
+            "label": "collectionCode",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Code for the collection within the institution"
           },
           {
-            "label": "has institutional code",
-            "domain": "Institution",
-            "range": "Institutional Code",
-            "description": "The code identifying the institution"
+            "label": "catalogNumber",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Unique identifier or specimen number within the collection"
           },
           {
-            "label": "has specimen identifier",
-            "domain": "Type Specimen",
-            "range": "Specimen Identifier",
-            "description": "Unique identifier assigned to the specimen"
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Unique identifier for the occurrence or specimen record"
           },
           {
-            "label": "has taxonomic information",
-            "domain": "Type Specimen",
-            "range": "Taxonomic Information",
-            "description": "Taxonomic classification details of the specimen"
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
           },
           {
-            "label": "has locality",
-            "domain": "Type Specimen",
-            "range": "Locality",
-            "description": "Geographic location of specimen collection"
+            "label": "taxonomicStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "Status of the taxon assignment, e.g., accepted, synonym"
           },
           {
-            "label": "has sex",
-            "domain": "Type Specimen",
-            "range": "Sex",
-            "description": "Biological sex of the specimen"
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "Description of the place where the specimen was collected"
           },
           {
-            "label": "has specimen count",
-            "domain": "Type Specimen",
-            "range": "Number of Specimens",
-            "description": "Number of specimens represented"
+            "label": "sex",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Sex of the organism represented by the specimen"
+          },
+          {
+            "label": "individualCount",
+            "domain": "Occurrence",
+            "range": "xsd:integer",
+            "description": "Number of individuals represented"
           }
         ]
       },
@@ -550,26 +598,39 @@
         "question": "How many type specimens are represented in the journal?",
         "concepts": [
           {
-            "label": "Type specimen",
-            "description": "An individual specimen on which the description and name of a new species is based",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Journal",
-            "description": "A periodical publication that contains scholarly articles",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Publication"
+              "Journal Citation",
+              "Publication Reference"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is represented in",
-            "domain": "Type specimen",
-            "range": "Journal",
-            "description": "Indicates that a type specimen is featured or included in a journal"
+            "label": "typeStatus",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The type status of a specimen, indicating if it is a type specimen"
+          },
+          {
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A citation of the scholarly publication in which the specimen is referenced"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "MaterialCitation",
+            "range": "PreservedSpecimen",
+            "description": "Link to the specimen occurrence referenced by the citation"
           }
         ]
       },
@@ -580,55 +641,50 @@
         "question": "Which institutions and collections currently hold the type specimens published in the journal?",
         "concepts": [
           {
-            "label": "Institution",
-            "description": "An organization such as a museum or research center that holds specimens",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved, including type specimens",
             "synonyms": [
-              "Organization",
-              "Repository"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A group of specimens held together within an institution",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Specimen collection",
-              "Repository collection"
-            ]
-          },
-          {
-            "label": "Type specimen",
-            "description": "A specimen that serves as the reference point for the identification of a species",
-            "synonyms": [
-              "Holotype",
-              "Lectotype"
-            ]
-          },
-          {
-            "label": "Journal",
-            "description": "A periodical publication in which scientific research is published",
-            "synonyms": [
-              "Scientific journal"
+              "Specimen Citation"
             ]
           }
         ],
         "properties": [
           {
-            "label": "holds",
-            "domain": "Institution",
-            "range": "Collection",
-            "description": "Indicates that an institution holds or maintains a collection"
+            "label": "institutionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Code for the institution that holds the specimen"
           },
           {
-            "label": "includes",
-            "domain": "Collection",
-            "range": "Type specimen",
-            "description": "Indicates that a collection includes specific type specimens"
+            "label": "collectionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Code for the collection within the institution that holds the specimen"
           },
           {
-            "label": "published in",
-            "domain": "Type specimen",
-            "range": "Journal",
-            "description": "Indicates that a type specimen is published in a specific journal"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the specimen as a type, e.g., holotype, paratype"
+          },
+          {
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Citation of the publication where the specimen is published"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Unique identifier for the specimen occurrence record"
           }
         ]
       },
@@ -639,42 +695,73 @@
         "question": "How are the type specimens published in the journal distributed across taxonomic groups (e.g., family, genus, species)?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen designated as representative of a species or other taxon",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved, such as a type specimen",
             "synonyms": [
-              "Holotype",
-              "Paratype"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Taxonomic Group",
-            "description": "A hierarchical category used in biological classification such as family, genus, or species",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Taxon",
-              "Classification Rank"
+              "Publication Citation"
             ]
           },
           {
-            "label": "Journal",
-            "description": "A periodical publication where scientific research is published",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Scientific Journal",
-              "Publication"
+              "Taxonomic Group",
+              "Family",
+              "Genus",
+              "Species"
+            ]
+          },
+          {
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
+            "synonyms": [
+              "Taxonomic Identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "isPublishedIn",
-            "domain": "Type Specimen",
-            "range": "Journal",
-            "description": "Indicates the journal where the type specimen was published"
+            "label": "typeStatus",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type (e.g., holotype, paratype)"
           },
           {
-            "label": "belongsToTaxonomicGroup",
-            "domain": "Type Specimen",
-            "range": "Taxonomic Group",
-            "description": "Links a type specimen to its taxonomic group"
+            "label": "associatedReferences",
+            "domain": "PreservedSpecimen",
+            "range": "MaterialCitation",
+            "description": "References or citations associated with the specimen, such as journal publications"
+          },
+          {
+            "label": "identificationID",
+            "domain": "PreservedSpecimen",
+            "range": "Identification",
+            "description": "Link to the taxonomic identification of the specimen"
+          },
+          {
+            "label": "taxonID",
+            "domain": "Identification",
+            "range": "Taxon",
+            "description": "Reference to the taxonomic group assigned in the identification"
+          },
+          {
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon, which can represent family, genus, or species"
+          },
+          {
+            "label": "taxonRank",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The taxonomic rank of the taxon (e.g., family, genus, species)"
           }
         ]
       },
@@ -685,57 +772,97 @@
         "question": "How are the type specimens published in the journal distributed geographically according to collection localities or gathering sites?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen on which the description and name of a new species is based",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Holotype",
-              "Paratype",
-              "Syntype"
+              "type specimen"
             ]
           },
           {
-            "label": "Journal",
-            "description": "A periodical publication in which scientific articles are published",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Scientific Journal",
-              "Publication"
+              "publication citation"
             ]
           },
           {
-            "label": "Collection Locality",
-            "description": "The specific geographic location where a specimen was collected",
+            "label": "Location",
+            "description": "A place or site where an event occurred or specimen was collected",
             "synonyms": [
-              "Gathering Site",
-              "Collection Site"
+              "collection locality",
+              "gathering site"
             ]
           },
           {
-            "label": "Geographic Distribution",
-            "description": "The spatial arrangement or spread of specimens across geographic locations",
+            "label": "Event",
+            "description": "An action or set of circumstances occurring at a Location during a period of time, such as a collecting event",
             "synonyms": [
-              "Spatial Distribution",
-              "Geographic Range"
+              "collection event",
+              "gathering event"
+            ]
+          },
+          {
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme, e.g. taxonomic identification",
+            "synonyms": [
+              "taxonomic identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "isPublishedIn",
-            "domain": "Type Specimen",
-            "range": "Journal",
-            "description": "Links a type specimen to the journal where it is published"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A reference to the publication where the specimen is published"
           },
           {
-            "label": "hasCollectionLocality",
-            "domain": "Type Specimen",
-            "range": "Collection Locality",
-            "description": "Specifies the geographic location where the specimen was collected"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type specimen"
           },
           {
-            "label": "hasGeographicDistribution",
-            "domain": "Type Specimen",
-            "range": "Geographic Distribution",
-            "description": "Indicates the geographic distribution of the specimen"
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record of the specimen"
+          },
+          {
+            "label": "eventID",
+            "domain": "Event",
+            "range": "xsd:string",
+            "description": "An identifier for the event at which the specimen was collected"
+          },
+          {
+            "label": "locationID",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "An identifier for the location where the specimen was collected"
+          },
+          {
+            "label": "decimalLatitude",
+            "domain": "Location",
+            "range": "xsd:decimal",
+            "description": "Latitude in decimal degrees for the collection locality"
+          },
+          {
+            "label": "decimalLongitude",
+            "domain": "Location",
+            "range": "xsd:decimal",
+            "description": "Longitude in decimal degrees for the collection locality"
+          },
+          {
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "Text description of the place where the specimen was collected"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References associated with the occurrence, such as publication citations"
           }
         ]
       },
@@ -746,40 +873,52 @@
         "question": "Which publications in the journal contain type specimen information, and which publications can be identified as type specimen catalogues?",
         "concepts": [
           {
-            "label": "Publication",
-            "description": "A documented work published in the journal",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Article",
-              "Paper"
+              "Publication",
+              "Catalogue"
             ]
           },
           {
-            "label": "Type Specimen Information",
-            "description": "Data or details about a type specimen included within a publication",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type Specimen Data"
+              "Type specimen"
             ]
           },
           {
-            "label": "Type Specimen Catalogue",
-            "description": "A publication that serves as a catalogue listing type specimens",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Type Catalogue"
+              "Specimen identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "contains",
-            "domain": "Publication",
-            "range": "Type Specimen Information",
-            "description": "Indicates that a publication includes type specimen information"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type (e.g., holotype, paratype)"
           },
           {
-            "label": "isIdentifiedAs",
-            "domain": "Publication",
-            "range": "Type Specimen Catalogue",
-            "description": "Indicates that a publication is classified as a type specimen catalogue"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation for the publication"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "MaterialCitation",
+            "range": "Occurrence",
+            "description": "Links the citation to occurrences (specimens) referenced"
+          },
+          {
+            "label": "typeStatus",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Indicates if the publication contains type specimen information"
           }
         ]
       },
@@ -790,40 +929,45 @@
         "question": "In which publications and publication sections is information on a specific type specimen reported?",
         "concepts": [
           {
-            "label": "Publication",
-            "description": "A published work such as a journal or book",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Published work"
+              "type specimen"
             ]
           },
           {
-            "label": "Publication Section",
-            "description": "A section or part within a publication",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Section",
-              "Publication part"
-            ]
-          },
-          {
-            "label": "Type Specimen",
-            "description": "A specimen used as the reference for a species or subspecies",
-            "synonyms": [
-              "Type"
+              "publication citation",
+              "publication section"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is reported in",
-            "domain": "Type Specimen",
-            "range": "Publication Section",
-            "description": "Indicates the publication section where the type specimen information is reported"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A reference to or citation of the publication in which the specimen is reported"
           },
           {
-            "label": "is part of",
-            "domain": "Publication Section",
-            "range": "Publication",
-            "description": "Indicates which publication a publication section belongs to"
+            "label": "occurrenceID",
+            "domain": "MaterialCitation",
+            "range": "Occurrence",
+            "description": "The identifier of the occurrence (specimen) referenced by the citation"
+          },
+          {
+            "label": "typeStatus",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Status indicating if the specimen is a type (e.g., holotype, paratype)"
+          },
+          {
+            "label": "verbatimLabel",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The original label or section description from the publication where the specimen is mentioned"
           }
         ]
       },
@@ -834,40 +978,52 @@
         "question": "Which publications contribute the largest number of type specimen records to the journal?",
         "concepts": [
           {
-            "label": "Publication",
-            "description": "A published work contributing information to the journal",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Article",
-              "Paper"
+              "Publication",
+              "Citation"
             ]
           },
           {
-            "label": "Type Specimen Record",
-            "description": "A documented instance of a type specimen associated with a publication",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type Specimen Entry"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Journal",
-            "description": "A periodical publication in which articles are published",
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
             "synonyms": [
-              "Zoological Journal"
+              "Record"
             ]
           }
         ],
         "properties": [
           {
-            "label": "contributes",
-            "domain": "Publication",
-            "range": "Type Specimen Record",
-            "description": "Indicates that a publication provides type specimen records"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The full citation of a bibliographic reference"
           },
           {
-            "label": "published_in",
-            "domain": "Publication",
-            "range": "Journal",
-            "description": "Specifies the journal where the publication appears"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the type, e.g., holotype, paratype"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References associated with the occurrence"
           }
         ]
       },
@@ -878,54 +1034,54 @@
         "question": "How has the publication of type specimen information changed over time within the journal?",
         "concepts": [
           {
-            "label": "Publication",
-            "description": "An instance of disseminating scientific information through the journal",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Article",
-              "Paper"
+              "citation",
+              "publication reference"
             ]
           },
           {
-            "label": "Type Specimen Information",
-            "description": "Data or details about a type specimen used for taxonomic reference",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type Specimen Data"
+              "type specimen",
+              "specimen"
             ]
           },
           {
-            "label": "Time",
-            "description": "A temporal point or period during which publications occur",
+            "label": "Event",
+            "description": "An action or set of circumstances occurring at a Location during a period of time",
             "synonyms": [
-              "Date",
-              "Year"
-            ]
-          },
-          {
-            "label": "Journal",
-            "description": "The zoological journal in which publications appear",
-            "synonyms": [
-              "Scientific Journal"
+              "publication event",
+              "time event"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasPublicationDate",
-            "domain": "Publication",
-            "range": "Time",
-            "description": "The date or time period when the publication was made"
+            "label": "eventDate",
+            "domain": "Event",
+            "range": "xsd:date",
+            "description": "The date or time period when the event occurred"
           },
           {
-            "label": "containsTypeSpecimenInformation",
-            "domain": "Publication",
-            "range": "Type Specimen Information",
-            "description": "Indicates that the publication includes type specimen data"
+            "label": "typeStatus",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type (e.g. holotype, syntype)"
           },
           {
-            "label": "publishedIn",
-            "domain": "Publication",
-            "range": "Journal",
-            "description": "The journal where the publication appears"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation of the material citation"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen occurrence record"
           }
         ]
       }
@@ -938,56 +1094,114 @@
         "question": "Which type specimens are documented in the available type specimen catalogues and publications, and what information is available for them?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as the reference point for the identification and naming of a species",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved, often used as a type specimen in collections",
             "synonyms": [
-              "Type"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Catalogue",
-            "description": "A systematic list of type specimens documented",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Catalogue of Type Specimens",
-              "Specimen Catalogue"
+              "Type Specimen Catalogue",
+              "Publication"
             ]
           },
           {
-            "label": "Publication",
-            "description": "A documented source such as a book or article containing information about type specimens",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Document",
-              "Article",
-              "Book"
+              "Specimen Identification"
             ]
           },
           {
-            "label": "Information",
-            "description": "Data or details available about type specimens in catalogues and publications",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Data",
-              "Details"
+              "Taxonomic Group"
+            ]
+          },
+          {
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
+            "synonyms": [
+              "Specimen Record"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is documented in",
-            "domain": "Type Specimen",
-            "range": "Catalogue",
-            "description": "Indicates that a type specimen is recorded in a catalogue"
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier given to the specimen or occurrence in the collection"
           },
           {
-            "label": "is documented in",
-            "domain": "Type Specimen",
-            "range": "Publication",
-            "description": "Indicates that a type specimen is recorded in a publication"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the identification as a type (e.g., holotype, paratype)"
           },
           {
-            "label": "has information",
-            "domain": "Type Specimen",
-            "range": "Information",
-            "description": "Associates a type specimen with available data or details"
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The person(s) who identified the specimen"
+          },
+          {
+            "label": "dateIdentified",
+            "domain": "Identification",
+            "range": "xsd:date",
+            "description": "The date when the specimen was identified"
+          },
+          {
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
+          },
+          {
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The taxonomic status of the name (e.g., accepted, synonym)"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The institution that holds the specimen"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The collection within the institution that holds the specimen"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "References (e.g., publications, catalogues) associated with the specimen"
+          },
+          {
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation for the catalogue or publication documenting the specimen"
+          },
+          {
+            "label": "occurrenceRemarks",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Additional notes or remarks about the specimen or occurrence"
           }
         ]
       },
@@ -998,59 +1212,52 @@
         "question": "Which type specimen catalogues and publications are available for my institution or collection?",
         "concepts": [
           {
-            "label": "Type specimen catalogue",
-            "description": "A catalogue documenting type specimens",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Type catalogue"
+              "catalogue",
+              "publication",
+              "reference"
             ]
           },
           {
-            "label": "Publication",
-            "description": "A published document or work",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Publication"
-            ]
-          },
-          {
-            "label": "Institution",
-            "description": "An organization or establishment managing collections",
-            "synonyms": [
-              "Organization",
-              "Establishment"
-            ]
-          },
-          {
-            "label": "Collection",
-            "description": "A group of specimens or items curated by an institution",
-            "synonyms": [
-              "Specimen collection"
+              "type specimen"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is available for",
-            "domain": "Type specimen catalogue",
-            "range": "Institution",
-            "description": "Indicates the institution for which the catalogue is available"
+            "label": "institutionCode",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Code for the institution that holds or is associated with the cited specimens"
           },
           {
-            "label": "is available for",
-            "domain": "Publication",
-            "range": "Institution",
-            "description": "Indicates the institution for which the publication is available"
+            "label": "collectionCode",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Code for the collection that holds or is associated with the cited specimens"
           },
           {
-            "label": "is available for",
-            "domain": "Type specimen catalogue",
-            "range": "Collection",
-            "description": "Indicates the collection for which the catalogue is available"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Bibliographic reference to the catalogue or publication"
           },
           {
-            "label": "is available for",
-            "domain": "Publication",
-            "range": "Collection",
-            "description": "Indicates the collection for which the publication is available"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "Status indicating a specimen is a type specimen"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "PreservedSpecimen",
+            "range": "MaterialCitation",
+            "description": "References associated with the specimen, such as catalogues or publications"
           }
         ]
       },
@@ -1061,40 +1268,70 @@
         "question": "Which authors or specialists have documented type specimens from my collection?",
         "concepts": [
           {
-            "label": "Author",
-            "description": "An individual who has written or documented scientific work",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "specialist",
-              "researcher"
+              "type specimen"
             ]
           },
           {
-            "label": "Type specimen",
-            "description": "A specimen that serves as a reference point for a species or taxon",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "type"
+              "citation",
+              "reference"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A set of specimens gathered and curated together",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "specimen collection"
+              "taxonomic identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "documents",
-            "domain": "Author",
-            "range": "Type specimen",
-            "description": "Indicates that an author has documented a type specimen"
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The person or specialist who identified the specimen"
           },
           {
-            "label": "belongs to",
-            "domain": "Type specimen",
-            "range": "Collection",
-            "description": "Indicates that a type specimen is part of a specific collection"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the specimen as a type"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within the collection"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "The code identifying the collection housing the specimen"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "The code identifying the institution housing the specimen"
+          },
+          {
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation referencing the specimen"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record of the specimen"
           }
         ]
       },
@@ -1105,41 +1342,39 @@
         "question": "Which publications provide information about a particular type specimen or group of type specimens?",
         "concepts": [
           {
-            "label": "Publication",
-            "description": "A document or work that provides information",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved, including type specimens",
             "synonyms": [
-              "Document",
-              "Article",
-              "Paper"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as a reference point for a species or taxon",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Reference Specimen"
-            ]
-          },
-          {
-            "label": "Group of Type Specimens",
-            "description": "A collection or set of type specimens",
-            "synonyms": [
-              "Specimen Group"
+              "Publication",
+              "Reference"
             ]
           }
         ],
         "properties": [
           {
-            "label": "provides information about",
-            "domain": "Publication",
-            "range": "Type Specimen",
-            "description": "Indicates that a publication contains information about a type specimen"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation of a publication"
           },
           {
-            "label": "provides information about",
-            "domain": "Publication",
-            "range": "Group of Type Specimens",
-            "description": "Indicates that a publication contains information about a group of type specimens"
+            "label": "occurrenceID",
+            "domain": "MaterialCitation",
+            "range": "Occurrence",
+            "description": "Identifier linking a publication reference to an occurrence (specimen)"
+          },
+          {
+            "label": "typeStatus",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The type status of the specimen cited in the publication"
           }
         ]
       },
@@ -1150,131 +1385,139 @@
         "question": "Which metadata elements (e.g., taxonomy, locality, collector, identifiers, repository information, references, images) are documented for type specimens in the available catalogues and publications?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen designated as the representative example of a species or subspecies",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Taxonomy",
-            "description": "Classification information of an organism",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Classification"
+              "taxonomy"
             ]
           },
           {
-            "label": "Locality",
-            "description": "Geographical location where the specimen was collected",
+            "label": "Location",
+            "description": "A place or area where an event occurs or where an organism is found",
             "synonyms": [
-              "Collection Location"
+              "locality"
             ]
           },
           {
-            "label": "Collector",
-            "description": "Person who collected the specimen",
+            "label": "Event",
+            "description": "An action or set of circumstances occurring at a Location during a period of time",
             "synonyms": [
-              "Collector Person"
+              "collector event"
             ]
           },
           {
-            "label": "Identifier",
-            "description": "Unique identifier assigned to the specimen",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Specimen Identifier"
+              "publications",
+              "references"
             ]
           },
           {
-            "label": "Repository",
-            "description": "Institution or place where the specimen is stored",
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
             "synonyms": [
-              "Collection Repository"
-            ]
-          },
-          {
-            "label": "Reference",
-            "description": "Publication or source documenting the specimen",
-            "synonyms": [
-              "Publication"
-            ]
-          },
-          {
-            "label": "Image",
-            "description": "Visual representation of the specimen",
-            "synonyms": [
-              "Photograph",
-              "Picture"
-            ]
-          },
-          {
-            "label": "Catalogue",
-            "description": "List or register of specimens available",
-            "synonyms": [
-              "Specimen Catalogue"
-            ]
-          },
-          {
-            "label": "Publication",
-            "description": "Document or work where specimen metadata is published",
-            "synonyms": [
-              "Document"
+              "catalogue record"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasTaxonomy",
-            "domain": "Type Specimen",
-            "range": "Taxonomy",
-            "description": "Links a type specimen to its taxonomic classification"
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name, with authorship and date information if known"
           },
           {
-            "label": "hasLocality",
-            "domain": "Type Specimen",
-            "range": "Locality",
-            "description": "Indicates the geographical location of specimen collection"
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "Status of the taxon name, e.g., accepted, synonym"
           },
           {
-            "label": "collectedBy",
-            "domain": "Type Specimen",
-            "range": "Collector",
-            "description": "Identifies the person who collected the specimen"
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen or occurrence within the collection"
           },
           {
-            "label": "hasIdentifier",
-            "domain": "Type Specimen",
-            "range": "Identifier",
-            "description": "Assigns a unique identifier to the specimen"
+            "label": "institutionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The code for the institution that holds the specimen"
           },
           {
-            "label": "storedIn",
-            "domain": "Type Specimen",
-            "range": "Repository",
-            "description": "Specifies the repository where the specimen is kept"
+            "label": "collectionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The code for the collection within the institution"
           },
           {
-            "label": "documentedIn",
-            "domain": "Type Specimen",
-            "range": "Catalogue",
-            "description": "Indicates the catalogue that documents the specimen"
+            "label": "recordedBy",
+            "domain": "Event",
+            "range": "xsd:string",
+            "description": "Names of people who recorded the occurrence"
           },
           {
-            "label": "documentedInPublication",
-            "domain": "Type Specimen",
-            "range": "Publication",
-            "description": "Specifies the publication documenting the specimen"
+            "label": "eventDate",
+            "domain": "Event",
+            "range": "xsd:date",
+            "description": "The date or date range when the event occurred"
           },
           {
-            "label": "hasReference",
-            "domain": "Type Specimen",
-            "range": "Reference",
-            "description": "Links the specimen to references or sources"
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The specific description of the place"
           },
           {
-            "label": "hasImage",
-            "domain": "Type Specimen",
-            "range": "Image",
-            "description": "Associates visual representations with the specimen"
+            "label": "decimalLatitude",
+            "domain": "Location",
+            "range": "xsd:decimal",
+            "description": "Latitude in decimal degrees"
+          },
+          {
+            "label": "decimalLongitude",
+            "domain": "Location",
+            "range": "xsd:decimal",
+            "description": "Longitude in decimal degrees"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References associated with the occurrence"
+          },
+          {
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "The full citation of the publication"
+          },
+          {
+            "label": "associatedMedia",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Links or references to images or other media associated with the occurrence"
+          },
+          {
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the specimen as a type (e.g., holotype, paratype)"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
           }
         ]
       },
@@ -1285,60 +1528,52 @@
         "question": "Which type specimens have the most comprehensive documentation across catalogues and publications?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen designated as the representative example of a species or subspecies",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Documentation",
-            "description": "Recorded information related to a specimen",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Record",
-              "Data"
+              "catalogue entry",
+              "publication reference"
             ]
           },
           {
-            "label": "Catalogue",
-            "description": "A systematic list or record of specimens",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Collection Catalogue"
-            ]
-          },
-          {
-            "label": "Publication",
-            "description": "A published work containing scientific information",
-            "synonyms": [
-              "Article",
-              "Paper"
+              "taxonomic identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasDocumentationIn",
-            "domain": "Type Specimen",
-            "range": "Documentation",
-            "description": "Links a type specimen to its documentation"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type (e.g., holotype, paratype)"
           },
           {
-            "label": "documentedInCatalogue",
-            "domain": "Documentation",
-            "range": "Catalogue",
-            "description": "Indicates that documentation is recorded in a catalogue"
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen in a collection or catalogue"
           },
           {
-            "label": "documentedInPublication",
-            "domain": "Documentation",
-            "range": "Publication",
-            "description": "Indicates that documentation is recorded in a publication"
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References or citations associated with the specimen or occurrence"
           },
           {
-            "label": "documentationCompletenessScore",
-            "domain": "Type Specimen",
-            "range": "Literal",
-            "description": "A measure of how comprehensive the documentation is for a type specimen"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic reference to a publication citing the specimen"
           }
         ]
       },
@@ -1349,56 +1584,59 @@
         "question": "Which type specimen catalogues provide the most comprehensive documentation for a collection, taxonomic group, or set of type specimens?",
         "concepts": [
           {
-            "label": "Type Specimen Catalogue",
-            "description": "A catalogue documenting type specimens",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Specimen Catalogue"
+              "Specimen catalogue",
+              "Catalogue reference"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A group or assembly of specimens or items",
-            "synonyms": []
-          },
-          {
-            "label": "Taxonomic Group",
-            "description": "A classification group of organisms sharing common characteristics",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Taxon"
+              "Specimen",
+              "Type specimen"
             ]
           },
           {
-            "label": "Type Specimen",
-            "description": "A specimen on which the description and name of a new species is based",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Type"
+              "Taxonomic group"
             ]
           }
         ],
         "properties": [
           {
-            "label": "provides documentation for",
-            "domain": "Type Specimen Catalogue",
-            "range": "Collection",
-            "description": "Indicates that a catalogue documents a collection"
+            "label": "collectionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "The code for the collection to which the specimen belongs"
           },
           {
-            "label": "provides documentation for",
-            "domain": "Type Specimen Catalogue",
-            "range": "Taxonomic Group",
-            "description": "Indicates that a catalogue documents a taxonomic group"
+            "label": "catalogNumber",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier given to the specimen within the collection"
           },
           {
-            "label": "provides documentation for",
-            "domain": "Type Specimen Catalogue",
-            "range": "Type Specimen",
-            "description": "Indicates that a catalogue documents type specimens"
+            "label": "associatedReferences",
+            "domain": "MaterialEntity",
+            "range": "MaterialCitation",
+            "description": "References or citations associated with the specimen"
           },
           {
-            "label": "documentation comprehensiveness",
-            "domain": "Type Specimen Catalogue",
-            "range": "Literal",
-            "description": "Degree to which the catalogue covers documentation"
+            "label": "taxonomicStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the taxon concept for the specimen"
+          },
+          {
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
           }
         ]
       },
@@ -1409,35 +1647,46 @@
         "question": "Which type specimens are documented by multiple catalogues or publications?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen designated as the representative example of a species",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Catalogue",
-            "description": "A published list or record of specimens",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Catalogue Publication",
-              "Catalogue Record"
-            ]
-          },
-          {
-            "label": "Publication",
-            "description": "A document that provides information about specimens",
-            "synonyms": [
-              "Document",
-              "Reference"
+              "catalogue",
+              "publication",
+              "bibliographic citation"
             ]
           }
         ],
         "properties": [
           {
-            "label": "isDocumentedBy",
-            "domain": "Type Specimen",
-            "range": "Publication",
-            "description": "Indicates that a type specimen is documented by a publication or catalogue"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type (e.g., holotype, paratype)"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within a collection or catalogue"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References or citations associated with the specimen"
+          },
+          {
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation of a publication"
           }
         ]
       },
@@ -1448,73 +1697,96 @@
         "question": "How has the information available for a particular type specimen changed across catalogues and publications over time?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen designated as the representative example of a species or subspecies",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "Type Specimen"
             ]
           },
           {
-            "label": "Catalogue",
-            "description": "A systematic list or record of specimens or items",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Catalog"
+              "Catalogue Reference",
+              "Publication Citation"
             ]
           },
           {
-            "label": "Publication",
-            "description": "A published document containing information about specimens",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Document"
+              "Taxonomic Identification"
             ]
           },
           {
-            "label": "Information",
-            "description": "Data or details about a specimen",
+            "label": "Provenance",
+            "description": "Information about an entity's origins",
             "synonyms": [
-              "Data",
-              "Details"
-            ]
-          },
-          {
-            "label": "Time",
-            "description": "The chronological context or period over which changes occur",
-            "synonyms": [
-              "Date",
-              "Temporal Context"
+              "History",
+              "Documentation Changes"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasInformation",
-            "domain": "Type Specimen",
-            "range": "Information",
-            "description": "Associates a specimen with its available information"
+            "label": "catalogNumber",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within a collection"
           },
           {
-            "label": "isRecordedIn",
-            "domain": "Information",
-            "range": "Catalogue",
-            "description": "Indicates the catalogue where the information is recorded"
+            "label": "basisOfRecord",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "The specific nature of the data record (e.g., PreservedSpecimen)"
           },
           {
-            "label": "isPublishedIn",
-            "domain": "Information",
-            "range": "Publication",
-            "description": "Indicates the publication where the information is documented"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type"
           },
           {
-            "label": "hasTemporalContext",
-            "domain": "Information",
-            "range": "Time",
-            "description": "Specifies the time period when the information was available or recorded"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation for the reference"
           },
           {
-            "label": "changesOverTime",
-            "domain": "Information",
-            "range": "Information",
-            "description": "Represents the change or difference in information across time"
+            "label": "dateIdentified",
+            "domain": "Identification",
+            "range": "xsd:date",
+            "description": "The date on which the Identification was made"
+          },
+          {
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The person or team who assigned the Identification"
+          },
+          {
+            "label": "identificationRemarks",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "Comments or notes about the Identification"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "PreservedSpecimen",
+            "range": "MaterialCitation",
+            "description": "References associated with the specimen"
+          },
+          {
+            "label": "provenance",
+            "domain": "Provenance",
+            "range": "xsd:string",
+            "description": "Information about the origin or history of the resource"
           }
         ]
       },
@@ -1525,51 +1797,38 @@
         "question": "Which type specimens have associated identifiers, collection numbers, or links to external resources?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as a reference point for the definition of a species",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Identifier",
-            "description": "A unique reference assigned to an entity",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "ID"
-            ]
-          },
-          {
-            "label": "Collection Number",
-            "description": "A number assigned to a specimen within a collection",
-            "synonyms": []
-          },
-          {
-            "label": "External Resource",
-            "description": "A resource outside the current system linked to an entity",
-            "synonyms": [
-              "External Link",
-              "External Reference"
+              "external resource"
             ]
           }
         ],
         "properties": [
           {
-            "label": "has Identifier",
-            "domain": "Type Specimen",
-            "range": "Identifier",
-            "description": "Associates a type specimen with its unique identifier"
+            "label": "catalogNumber",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier given to the specimen in the collection"
           },
           {
-            "label": "has Collection Number",
-            "domain": "Type Specimen",
-            "range": "Collection Number",
-            "description": "Associates a type specimen with its collection number"
+            "label": "occurrenceID",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "A unique identifier for the occurrence record"
           },
           {
-            "label": "has External Resource",
-            "domain": "Type Specimen",
-            "range": "External Resource",
-            "description": "Links a type specimen to an external resource"
+            "label": "associatedReferences",
+            "domain": "PreservedSpecimen",
+            "range": "MaterialCitation",
+            "description": "References or citations associated with the specimen"
           }
         ]
       },
@@ -1580,95 +1839,109 @@
         "question": "Which type specimens are associated with the richest network of linked information, such as publications, taxonomic names, institutions, collectors, localities, and identifiers?",
         "concepts": [
           {
-            "label": "Type specimen",
-            "description": "A specimen serving as a reference point for a taxonomic name",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Publication",
-            "description": "A document where scientific information is formally published",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Article",
-              "Paper"
+              "publication",
+              "reference"
             ]
           },
           {
-            "label": "Taxonomic name",
-            "description": "A scientific name assigned to a taxon",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Scientific name"
+              "taxonomic name"
             ]
           },
           {
-            "label": "Institution",
-            "description": "An organization that houses or manages specimens",
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
             "synonyms": [
-              "Museum",
-              "Repository"
+              "specimen record"
             ]
           },
           {
-            "label": "Collector",
-            "description": "A person who collected the specimen",
+            "label": "Event",
+            "description": "An action or set of circumstances occurring at a Location during a period of time",
             "synonyms": [
-              "Gatherer"
+              "collecting event"
             ]
           },
           {
-            "label": "Locality",
-            "description": "The geographic location where the specimen was collected",
+            "label": "Location",
+            "description": "The place where an Event occurred or where an Organism was observed or collected",
             "synonyms": [
-              "Location",
-              "Place"
-            ]
-          },
-          {
-            "label": "Identifier",
-            "description": "A unique code or number assigned to a specimen or record",
-            "synonyms": [
-              "ID",
-              "Accession number"
+              "locality"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is associated with",
-            "domain": "Type specimen",
-            "range": "Publication",
-            "description": "Links a specimen to relevant publications"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "Status of a specimen as a type"
           },
           {
-            "label": "has taxonomic name",
-            "domain": "Type specimen",
-            "range": "Taxonomic name",
-            "description": "Specifies the taxonomic name assigned to the specimen"
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References associated with the specimen or occurrence"
           },
           {
-            "label": "is housed in",
-            "domain": "Type specimen",
-            "range": "Institution",
-            "description": "Indicates the institution where the specimen is stored"
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
           },
           {
-            "label": "collected by",
-            "domain": "Type specimen",
-            "range": "Collector",
-            "description": "Identifies the person who collected the specimen"
+            "label": "institutionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Code for the institution holding the specimen"
           },
           {
-            "label": "collected at",
-            "domain": "Type specimen",
-            "range": "Locality",
-            "description": "Specifies the location where the specimen was collected"
+            "label": "collectionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Code for the collection within the institution"
           },
           {
-            "label": "has identifier",
-            "domain": "Type specimen",
-            "range": "Identifier",
-            "description": "Assigns a unique identifier to the specimen"
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "Identifier for the specimen within the collection"
+          },
+          {
+            "label": "recordedBy",
+            "domain": "Event",
+            "range": "xsd:string",
+            "description": "Person(s) who collected the specimen"
+          },
+          {
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The specific place where the specimen was collected"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "associatedTaxa",
+            "domain": "Occurrence",
+            "range": "Taxon",
+            "description": "Taxa associated with the specimen"
           }
         ]
       },
@@ -1679,78 +1952,108 @@
         "question": "How does the amount and diversity of information available for type specimens vary across catalogues and publications?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as the reference point for the identification and naming of a species",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Holotype",
-              "Paratype"
+              "type specimen"
             ]
           },
           {
-            "label": "Information",
-            "description": "Data or details available about a subject",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Data",
-              "Details"
+              "catalogue",
+              "publication"
             ]
           },
           {
-            "label": "Catalogue",
-            "description": "A systematic list or record of items, such as specimens or publications",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Catalog"
+              "taxonomic identification"
             ]
           },
           {
-            "label": "Publication",
-            "description": "A published work containing information or data",
+            "label": "MeasurementOrFact",
+            "description": "A measurement of or fact about a resource",
             "synonyms": [
-              "Article",
-              "Paper",
-              "Document"
-            ]
-          },
-          {
-            "label": "Diversity",
-            "description": "Variety or range of different types or kinds",
-            "synonyms": [
-              "Variety",
-              "Range"
-            ]
-          },
-          {
-            "label": "Amount",
-            "description": "Quantity or volume of information",
-            "synonyms": [
-              "Quantity",
-              "Volume"
+              "information amount",
+              "information diversity"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasInformationAmount",
-            "domain": "Type Specimen",
-            "range": "Amount",
-            "description": "The quantity of information available for a type specimen"
+            "label": "catalogNumber",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within a collection or catalogue"
           },
           {
-            "label": "hasInformationDiversity",
-            "domain": "Type Specimen",
-            "range": "Diversity",
-            "description": "The variety of information types available for a type specimen"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of a specimen as a type"
           },
           {
-            "label": "isDocumentedIn",
-            "domain": "Type Specimen",
-            "range": "Catalogue",
-            "description": "The catalogue in which the type specimen is listed"
+            "label": "associatedReferences",
+            "domain": "PreservedSpecimen",
+            "range": "MaterialCitation",
+            "description": "References or citations associated with the specimen"
           },
           {
-            "label": "isPublishedIn",
-            "domain": "Type Specimen",
-            "range": "Publication",
-            "description": "The publication in which information about the type specimen is available"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation of the catalogue or publication"
+          },
+          {
+            "label": "datasetID",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "Identifier for the dataset or catalogue"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Code for the collection housing the specimen"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Code for the institution housing the specimen"
+          },
+          {
+            "label": "dynamicProperties",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "Additional diverse information about the specimen in a structured format"
+          },
+          {
+            "label": "measurementType",
+            "domain": "MeasurementOrFact",
+            "range": "xsd:string",
+            "description": "Type of measurement or fact recorded"
+          },
+          {
+            "label": "measurementValue",
+            "domain": "MeasurementOrFact",
+            "range": "xsd:string",
+            "description": "Value of the measurement or fact"
+          },
+          {
+            "label": "measurementUnit",
+            "domain": "MeasurementOrFact",
+            "range": "xsd:string",
+            "description": "Unit of measurement"
+          },
+          {
+            "label": "measurementRemarks",
+            "domain": "MeasurementOrFact",
+            "range": "xsd:string",
+            "description": "Remarks about the measurement or fact"
           }
         ]
       }
@@ -1763,26 +2066,78 @@
         "question": "Which type specimens are documented in the collection?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen designated as the representative example of a species or subspecies.",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type Material"
+              "type specimen"
             ]
           },
           {
-            "label": "Collection",
-            "description": "An assembly of specimens held together for scientific study or reference.",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Specimen Collection"
+              "specimen",
+              "material entity"
+            ]
+          },
+          {
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
+            "synonyms": [
+              "taxonomic identification"
+            ]
+          },
+          {
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
+            "synonyms": [
+              "citation"
+            ]
+          },
+          {
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
+            "synonyms": [
+              "recorded specimen occurrence"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is documented in",
-            "domain": "Type Specimen",
-            "range": "Collection",
-            "description": "Indicates that a type specimen is recorded or held within a specific collection."
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the specimen as a type (e.g., holotype, paratype)"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen within a collection"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "Code for the collection in which the specimen is held"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "Code for the institution housing the specimen"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "basisOfRecord",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The specific nature of the data record (e.g., PreservedSpecimen)"
           }
         ]
       },
@@ -1793,26 +2148,40 @@
         "question": "How many type specimens exist in the collection?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as a reference point for a species or subspecies",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type Material"
+              "type specimen",
+              "specimen"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A set of specimens gathered and maintained for study or reference",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Specimen Collection"
+              "identification",
+              "taxonomic identification"
             ]
           }
         ],
         "properties": [
           {
-            "label": "existsIn",
-            "domain": "Type Specimen",
-            "range": "Collection",
-            "description": "Indicates that a type specimen is part of a specific collection"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the specimen as a type (e.g., holotype, paratype)"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier given to the specimen by the collection"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "The code identifying the collection to which the specimen belongs"
           }
         ]
       },
@@ -1823,28 +2192,50 @@
         "question": "How are type specimens distributed across taxonomic groups?",
         "concepts": [
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as the reference point for the definition of a species or taxon",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "Type Example",
-              "Reference Specimen"
+              "type specimen"
             ]
           },
           {
-            "label": "Taxonomic Group",
-            "description": "A group of organisms classified together based on shared characteristics",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Taxon",
-              "Taxonomic Category"
+              "taxonomic group"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is distributed across",
-            "domain": "Type Specimen",
-            "range": "Taxonomic Group",
-            "description": "Indicates the taxonomic groups in which type specimens are found"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the type specimen according to nomenclatural codes"
+          },
+          {
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The person or entity who assigned the taxonomic identification"
+          },
+          {
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
+          },
+          {
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The status of the taxon name (e.g., accepted, synonym)"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
           }
         ]
       },
@@ -1855,33 +2246,70 @@
         "question": "Which taxonomic groups are best represented in the collection?",
         "concepts": [
           {
-            "label": "Taxonomic Group",
-            "description": "A category of organisms classified in taxonomy such as genus, family, or order",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Taxon",
-              "Taxonomic Category"
+              "taxonomic group",
+              "taxon"
             ]
           },
           {
-            "label": "Collection",
-            "description": "An assemblage of specimens or items held for scientific purposes",
+            "label": "Occurrence",
+            "description": "An event that establishes the state of an organism at a place and time",
             "synonyms": [
-              "Specimen Collection"
+              "recorded specimen",
+              "occurrence record"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is represented by",
-            "domain": "Collection",
-            "range": "Taxonomic Group",
-            "description": "Indicates the taxonomic groups that are represented within a collection"
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name of the taxon"
           },
           {
-            "label": "representation strength",
-            "domain": "Taxonomic Group",
-            "range": "Quantity",
-            "description": "The degree or extent to which a taxonomic group is represented in the collection"
+            "label": "acceptedNameUsage",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The taxon name currently accepted as correct"
+          },
+          {
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The status of the taxon name (e.g., valid, synonym)"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "basisOfRecord",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The specific nature of the occurrence (e.g., PreservedSpecimen, HumanObservation)"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen or occurrence in the collection"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The code for the collection housing the specimen"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The code for the institution housing the collection"
           }
         ]
       },
@@ -1892,49 +2320,55 @@
         "question": "What geographic regions are represented by the collection’s type specimens?",
         "concepts": [
           {
-            "label": "Geographic region",
-            "description": "A defined area or location on the Earth's surface",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "location",
-              "area",
-              "region"
+              "type specimen"
             ]
           },
           {
-            "label": "Type specimen",
-            "description": "A specimen on which the description and name of a new species is based",
-            "synonyms": [
-              "holotype",
-              "reference specimen"
-            ]
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
+            "synonyms": []
           },
           {
-            "label": "Collection",
-            "description": "An assembled group of specimens or items",
+            "label": "Location",
+            "description": "A place with geographic and political information",
             "synonyms": [
-              "specimen collection",
-              "repository"
+              "geographic region"
             ]
           }
         ],
         "properties": [
           {
-            "label": "is represented by",
-            "domain": "Collection",
-            "range": "Geographic region",
-            "description": "Indicates the geographic regions represented within a collection"
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the Occurrence"
           },
           {
-            "label": "has type specimen",
-            "domain": "Collection",
-            "range": "Type specimen",
-            "description": "Indicates that the collection includes a particular type specimen"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The type status of the specimen (e.g., holotype, paratype)"
           },
           {
-            "label": "originates from",
-            "domain": "Type specimen",
-            "range": "Geographic region",
-            "description": "Specifies the geographic region from which a type specimen was collected"
+            "label": "locationID",
+            "domain": "Occurrence",
+            "range": "Location",
+            "description": "An identifier for the Location associated with the Occurrence"
+          },
+          {
+            "label": "higherGeography",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "The larger geographic region containing the Location"
+          },
+          {
+            "label": "locality",
+            "domain": "Location",
+            "range": "xsd:string",
+            "description": "Specific description of the place"
           }
         ]
       },
@@ -1945,42 +2379,46 @@
         "question": "Which catalogues documenting the collection have been published?",
         "concepts": [
           {
-            "label": "Catalogue",
-            "description": "A systematic list or record documenting items in a collection",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Catalog",
-              "Inventory"
+              "catalogue",
+              "published catalogue"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A group of items or specimens gathered and maintained together",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Holdings",
-              "Assemblage"
-            ]
-          },
-          {
-            "label": "Publication",
-            "description": "The act or instance of making a document publicly available",
-            "synonyms": [
-              "Published work",
-              "Issue"
+              "collection",
+              "specimen collection"
             ]
           }
         ],
         "properties": [
           {
-            "label": "documents",
-            "domain": "Catalogue",
-            "range": "Collection",
-            "description": "Indicates which collection is documented by the catalogue"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation of the reference"
           },
           {
-            "label": "hasPublicationStatus",
-            "domain": "Catalogue",
-            "range": "Publication",
-            "description": "Indicates whether the catalogue has been published"
+            "label": "collectionID",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier for the collection"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier for an item within a collection"
+          },
+          {
+            "label": "associatedReferences",
+            "domain": "MaterialEntity",
+            "range": "MaterialCitation",
+            "description": "References associated with the material entity"
           }
         ]
       },
@@ -1991,46 +2429,53 @@
         "question": "Which specialists have documented or studied the collection’s type specimens?",
         "concepts": [
           {
-            "label": "Specialist",
-            "description": "A person with expertise who documents or studies specimens",
+            "label": "PreservedSpecimen",
+            "description": "A specimen that has been preserved",
             "synonyms": [
-              "expert",
-              "researcher"
+              "type specimen"
             ]
           },
           {
-            "label": "Type Specimen",
-            "description": "A specimen that serves as the reference point for a species or taxon",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "reference specimen"
+              "determination",
+              "taxonomic identification"
             ]
           },
           {
-            "label": "Collection",
-            "description": "An assembled group of specimens maintained together",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "specimen collection"
+              "literature reference",
+              "publication citation"
             ]
           }
         ],
         "properties": [
           {
-            "label": "has documented",
-            "domain": "Specialist",
-            "range": "Type Specimen",
-            "description": "Indicates that the specialist has documented the type specimen"
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "A person or group who assigned the identification"
           },
           {
-            "label": "has studied",
-            "domain": "Specialist",
-            "range": "Type Specimen",
-            "description": "Indicates that the specialist has studied the type specimen"
+            "label": "typeStatus",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The status of the identification as a type specimen"
           },
           {
-            "label": "is part of",
-            "domain": "Type Specimen",
-            "range": "Collection",
-            "description": "Indicates that the type specimen belongs to a collection"
+            "label": "associatedReferences",
+            "domain": "PreservedSpecimen",
+            "range": "MaterialCitation",
+            "description": "References associated with the specimen"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "PreservedSpecimen",
+            "range": "xsd:string",
+            "description": "An identifier for the specimen in the collection"
           }
         ]
       },
@@ -2041,42 +2486,66 @@
         "question": "How has the scientific interpretation of the collection changed over time?",
         "concepts": [
           {
-            "label": "Scientific Interpretation",
-            "description": "An explanation or understanding of the collection based on scientific analysis",
+            "label": "Identification",
+            "description": "A classification of a resource according to a classification scheme",
             "synonyms": [
-              "Scientific Analysis",
-              "Scientific Explanation"
+              "scientific interpretation",
+              "taxonomic identification"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A set of items gathered and maintained for study or display",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Collection Item",
-              "Specimen"
+              "specimen",
+              "sample"
             ]
           },
           {
-            "label": "Time",
-            "description": "A point or period when an event occurs",
+            "label": "Provenance",
+            "description": "Information about an entity's origins",
             "synonyms": [
-              "Date",
-              "Period"
+              "history",
+              "interpretation history"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasInterpretationAtTime",
-            "domain": "Collection",
-            "range": "Scientific Interpretation",
-            "description": "Links a collection to its scientific interpretation at a specific time"
+            "label": "dateIdentified",
+            "domain": "Identification",
+            "range": "xsd:date",
+            "description": "The date on which the identification was made"
           },
           {
-            "label": "changedOverTime",
-            "domain": "Scientific Interpretation",
-            "range": "Time",
-            "description": "Indicates that the scientific interpretation has evolved or changed during different times"
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "The person or team who identified the resource"
+          },
+          {
+            "label": "identificationRemarks",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "Comments or notes about the identification"
+          },
+          {
+            "label": "previousIdentifications",
+            "domain": "Organism",
+            "range": "Identification",
+            "description": "Prior identifications associated with the organism"
+          },
+          {
+            "label": "provenance",
+            "domain": "Provenance",
+            "range": "xsd:string",
+            "description": "Information about the origin or history of an entity"
+          },
+          {
+            "label": "materialEntityID",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier for the material entity"
           }
         ]
       },
@@ -2087,42 +2556,66 @@
         "question": "How has the collection developed throughout its history?",
         "concepts": [
           {
-            "label": "Collection",
-            "description": "A group of items or specimens gathered and maintained",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Assemblage",
-              "Compilation"
+              "Specimen",
+              "Collection Item"
             ]
           },
           {
-            "label": "Development",
-            "description": "The process of growth or change over time",
+            "label": "Event",
+            "description": "An action or set of circumstances occurring at a Location during a period of time",
             "synonyms": [
-              "Evolution",
-              "Progression"
+              "Collection Event",
+              "Acquisition Event"
             ]
           },
           {
-            "label": "History",
-            "description": "The record of past events related to the collection",
+            "label": "Provenance",
+            "description": "Information about an entity's origins",
             "synonyms": [
-              "Chronology",
-              "Background"
+              "Source Information",
+              "History"
             ]
           }
         ],
         "properties": [
           {
-            "label": "hasDevelopment",
-            "domain": "Collection",
-            "range": "Development",
-            "description": "Indicates the development process of the collection"
+            "label": "collectionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "The code identifying the collection to which the material entity belongs"
           },
           {
-            "label": "hasHistory",
-            "domain": "Collection",
-            "range": "History",
-            "description": "Relates the collection to its historical record"
+            "label": "institutionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "The code identifying the institution holding the material entity"
+          },
+          {
+            "label": "eventDate",
+            "domain": "Event",
+            "range": "xsd:dateTime",
+            "description": "The date or date range when the event occurred"
+          },
+          {
+            "label": "eventID",
+            "domain": "Event",
+            "range": "xsd:string",
+            "description": "An identifier for the event"
+          },
+          {
+            "label": "provenance",
+            "domain": "Provenance",
+            "range": "xsd:string",
+            "description": "Information about the origin or history of the material entity"
+          },
+          {
+            "label": "provenanceID",
+            "domain": "Provenance",
+            "range": "xsd:string",
+            "description": "An identifier for the provenance information"
           }
         ]
       },
@@ -2133,28 +2626,84 @@
         "question": "What are the principal scientific strengths of the collection?",
         "concepts": [
           {
-            "label": "Collection",
-            "description": "A set of items or specimens gathered and maintained.",
+            "label": "Taxon",
+            "description": "A group of organisms considered to be taxonomically homogeneous",
             "synonyms": [
-              "Specimen collection",
-              "Repository"
+              "Taxonomic group",
+              "Scientific group"
             ]
           },
           {
-            "label": "Scientific strength",
-            "description": "A key area of scientific expertise or notable quality related to the collection.",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Scientific excellence",
-              "Research strength"
+              "Specimen",
+              "Sample"
+            ]
+          },
+          {
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
+            "synonyms": [
+              "Observation",
+              "Collection event"
             ]
           }
         ],
         "properties": [
           {
-            "label": "has scientific strength",
-            "domain": "Collection",
-            "range": "Scientific strength",
-            "description": "Indicates a principal scientific strength associated with a collection."
+            "label": "collectionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "Code for the collection from which the material entity originates"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "Code for the institution housing the material entity"
+          },
+          {
+            "label": "catalogNumber",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier for the material entity within a collection"
+          },
+          {
+            "label": "basisOfRecord",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "The specific nature of the data record (e.g., PreservedSpecimen, FossilSpecimen)"
+          },
+          {
+            "label": "scientificName",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The full scientific name, with authorship and date information if known"
+          },
+          {
+            "label": "taxonomicStatus",
+            "domain": "Taxon",
+            "range": "xsd:string",
+            "description": "The status of the taxon name (e.g., accepted, synonym)"
+          },
+          {
+            "label": "occurrenceID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the occurrence record"
+          },
+          {
+            "label": "recordedBy",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "A list of names of people, groups, or organizations responsible for recording the occurrence"
+          },
+          {
+            "label": "identifiedBy",
+            "domain": "Identification",
+            "range": "xsd:string",
+            "description": "A list of names of people, groups, or organizations who assigned the taxon identification"
           }
         ]
       },
@@ -2165,50 +2714,65 @@
         "question": "Which catalogues contribute the most knowledge and documentation about the collection?",
         "concepts": [
           {
-            "label": "Catalogue",
-            "description": "A systematic list or record providing information about items in a collection",
+            "label": "MaterialCitation",
+            "description": "A reference to or citation of one or more specimens in scholarly publications",
             "synonyms": [
-              "Catalog"
+              "Catalogue",
+              "Reference"
             ]
           },
           {
-            "label": "Knowledge",
-            "description": "Information and understanding about the collection",
-            "synonyms": []
-          },
-          {
-            "label": "Documentation",
-            "description": "Recorded information that provides evidence or details about the collection",
+            "label": "MaterialEntity",
+            "description": "An entity that can be identified and consists in whole or part of physical matter",
             "synonyms": [
-              "Records"
+              "Specimen",
+              "Sample"
             ]
           },
           {
-            "label": "Collection",
-            "description": "A group of related items gathered and maintained for study or reference",
+            "label": "Occurrence",
+            "description": "A dwc:Event that establishes the state of a dwc:Organism at a place and time",
             "synonyms": [
-              "Collection of items"
+              "Record"
             ]
           }
         ],
         "properties": [
           {
-            "label": "contributesKnowledge",
-            "domain": "Catalogue",
-            "range": "Knowledge",
-            "description": "Indicates the knowledge provided by a catalogue about the collection"
+            "label": "associatedReferences",
+            "domain": "Occurrence",
+            "range": "MaterialCitation",
+            "description": "References associated with the occurrence"
           },
           {
-            "label": "contributesDocumentation",
-            "domain": "Catalogue",
-            "range": "Documentation",
-            "description": "Indicates the documentation provided by a catalogue about the collection"
+            "label": "bibliographicCitation",
+            "domain": "MaterialCitation",
+            "range": "xsd:string",
+            "description": "A bibliographic citation"
           },
           {
-            "label": "isAbout",
-            "domain": "Catalogue",
-            "range": "Collection",
-            "description": "Relates a catalogue to the collection it describes"
+            "label": "catalogNumber",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "An identifier given to the material entity in a collection"
+          },
+          {
+            "label": "collectionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "The code identifying the collection to which the material entity belongs"
+          },
+          {
+            "label": "institutionCode",
+            "domain": "MaterialEntity",
+            "range": "xsd:string",
+            "description": "The code identifying the institution holding the material entity"
+          },
+          {
+            "label": "datasetID",
+            "domain": "Occurrence",
+            "range": "xsd:string",
+            "description": "An identifier for the dataset containing the occurrence"
           }
         ]
       }
