@@ -6,6 +6,31 @@ Information Extraction Tools to Annotate Type Specimen Catalogs.
 * Procedural Memory
 
 
+## Run Prompts On GPT
+1. Install dependencies:
+	`pip install openai pyyaml`
+2. Export your API key:
+	`export OPENAI_API_KEY="your_key_here"`
+	(or set `api_key` per model in `config/model_config.yaml`, e.g. `api_key: ${OPENAI_API_KEY}`)
+3. Run prompts:
+	`python run_prompts.py --prompt-file example.txt --model-alias llm_model`
+
+Useful options:
+* `--prompt "your question"` (repeat for multiple prompts)
+* `--prompt-file path/to/file.txt` (prompts separated by blank lines)
+* `--output outputs.jsonl` (save results)
+* `--system-prompt "You are a helpful extraction assistant."`
+
+## Extract Concepts And Properties From Competency Questions
+Run:
+`./run_cq_extraction.sh [input_json] [output_jsonl] [grouped_output_json]`
+
+Defaults:
+* input: `data/competency_questions/competency_questions.json`
+* jsonl output: `outputs/cq_concepts_properties.jsonl`
+* grouped output: `outputs/cq_concepts_properties_grouped.json`
+
+
 ## MCP with Dynamic Memory Architecture
 ! wip for figure.
 
