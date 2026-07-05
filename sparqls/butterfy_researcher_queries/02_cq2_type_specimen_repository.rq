@@ -1,0 +1,7 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?specimen ?collection
+WHERE {
+    ?specimen ex:typeForTaxon <TARGET_TAXON_URI> ;
+              ex:institutionCode ?collection .
+}

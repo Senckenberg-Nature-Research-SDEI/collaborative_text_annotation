@@ -1,0 +1,11 @@
+SELECT ?country ?stateProvince
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+WHERE {
+  ?specimen a ex:TypeSpecimen ;
+            ex:belongsToCollection <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?specimen dwc:country ?country . }
+  OPTIONAL { ?specimen dwc:stateProvince ?stateProvince . }
+}
+GROUP BY ?country ?stateProvince
+ORDER BY DESC(?specimenCount)

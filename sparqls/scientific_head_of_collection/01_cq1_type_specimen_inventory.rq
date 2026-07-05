@@ -1,0 +1,10 @@
+SELECT ?specimen ?catalogNumber ?scientificName ?typeStatus
+WHERE {
+  ?specimen a ex:TypeSpecimen ;
+            ex:belongsToCollection <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?specimen dwc:catalogNumber ?catalogNumber . }
+  OPTIONAL { ?specimen dwc:scientificName ?scientificName . }
+  OPTIONAL { ?specimen dwc:typeStatus ?typeStatus . }
+}
+ORDER BY ?scientificName

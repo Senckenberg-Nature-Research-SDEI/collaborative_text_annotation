@@ -1,0 +1,11 @@
+SELECT ?catalogue ?title
+       (COUNT(DISTINCT ?specimen) AS ?documentedSpecimens)
+WHERE {
+  ?catalogue ex:documentsTypeSpecimen ?specimen .
+
+  ?specimen ex:belongsToCollection <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?catalogue dcterms:title ?title . }
+}
+GROUP BY ?catalogue ?title
+ORDER BY DESC(?documentedSpecimens)

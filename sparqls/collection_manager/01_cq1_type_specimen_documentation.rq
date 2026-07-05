@@ -1,0 +1,10 @@
+SELECT ?specimen ?publication ?title ?taxon ?institution ?locality ?identifier
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+  OPTIONAL { ?specimen dwc:scientificName ?taxon . }
+  OPTIONAL { ?specimen ex:heldBy ?institution . }
+  OPTIONAL { ?specimen dwc:locality ?locality . }
+  OPTIONAL { ?specimen dcterms:identifier ?identifier . }
+}

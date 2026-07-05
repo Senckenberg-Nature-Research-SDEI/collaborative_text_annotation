@@ -1,0 +1,10 @@
+SELECT ?specimen ?publication ?title ?date ?property ?value
+WHERE {
+  ?publication ex:documentsTypeSpecimen <TARGET_SPECIMEN_URI> ;
+               dcterms:issued ?date .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+
+  <TARGET_SPECIMEN_URI> ?property ?value .
+}
+ORDER BY ?date

@@ -1,0 +1,7 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?resource ?type
+WHERE {
+    <TARGET_SPECIMEN_URI> ex:hasAssociatedResource ?resource .
+    OPTIONAL { ?resource a ?type . }
+}

@@ -1,0 +1,8 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?event ?location
+WHERE {
+    <TARGET_SPECIMEN_URI> ex:hasOccurrence ?occurrence .
+    ?occurrence ex:recordedAtEvent ?event ;
+                ex:atLocation ?location .
+}

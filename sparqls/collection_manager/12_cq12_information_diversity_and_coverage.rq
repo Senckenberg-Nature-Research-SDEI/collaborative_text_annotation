@@ -1,0 +1,15 @@
+SELECT ?publication ?title
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+       (COUNT(DISTINCT ?property) AS ?metadataPropertyCount)
+       (COUNT(DISTINCT ?value) AS ?metadataValueCount)
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+
+  OPTIONAL {
+    ?specimen ?property ?value .
+  }
+}
+GROUP BY ?publication ?title
+ORDER BY DESC(?metadataPropertyCount) DESC(?metadataValueCount)

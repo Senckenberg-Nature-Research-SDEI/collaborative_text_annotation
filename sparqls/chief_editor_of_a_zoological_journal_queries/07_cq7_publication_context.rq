@@ -1,0 +1,12 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?publication ?title ?section
+WHERE {
+  ?publication ex:mentionsTypeSpecimen <TARGET_SPECIMEN_URI> .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+  OPTIONAL {
+    ?publication ex:hasSection ?section .
+    ?section ex:mentionsTypeSpecimen <TARGET_SPECIMEN_URI> .
+  }
+}

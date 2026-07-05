@@ -1,0 +1,14 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?publication ?title ?isCatalogue
+WHERE {
+  ?publication ex:mentionsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+
+  BIND(EXISTS {
+    ?publication a ex:TypeSpecimenCatalogue .
+  } AS ?isCatalogue)
+}
+GROUP BY ?publication ?title ?isCatalogue
+ORDER BY ?title

@@ -1,0 +1,12 @@
+SELECT DISTINCT ?publication ?title
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+
+  FILTER(
+    ?specimen = <TARGET_SPECIMEN_URI>
+    || EXISTS { ?specimen dwc:genus <TARGET_GENUS> }
+    || EXISTS { ?specimen dwc:family <TARGET_FAMILY> }
+  )
+}

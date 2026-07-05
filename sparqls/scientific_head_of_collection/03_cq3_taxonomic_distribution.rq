@@ -1,0 +1,11 @@
+SELECT ?family ?genus
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+WHERE {
+  ?specimen a ex:TypeSpecimen ;
+            ex:belongsToCollection <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?specimen dwc:family ?family . }
+  OPTIONAL { ?specimen dwc:genus ?genus . }
+}
+GROUP BY ?family ?genus
+ORDER BY DESC(?specimenCount)

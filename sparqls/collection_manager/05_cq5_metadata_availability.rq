@@ -1,0 +1,19 @@
+SELECT ?specimen
+       (BOUND(?taxon) AS ?hasTaxonomy)
+       (BOUND(?locality) AS ?hasLocality)
+       (BOUND(?collector) AS ?hasCollector)
+       (BOUND(?identifier) AS ?hasIdentifier)
+       (BOUND(?repository) AS ?hasRepository)
+       (BOUND(?reference) AS ?hasReference)
+       (BOUND(?image) AS ?hasImage)
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?specimen dwc:scientificName ?taxon . }
+  OPTIONAL { ?specimen dwc:locality ?locality . }
+  OPTIONAL { ?specimen dwc:recordedBy ?collector . }
+  OPTIONAL { ?specimen dcterms:identifier ?identifier . }
+  OPTIONAL { ?specimen ex:heldBy ?repository . }
+  OPTIONAL { ?publication dcterms:bibliographicCitation ?reference . }
+  OPTIONAL { ?specimen foaf:depiction ?image . }
+}

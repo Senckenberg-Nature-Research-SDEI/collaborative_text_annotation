@@ -1,0 +1,30 @@
+SELECT ?catalogue ?title
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+       (COUNT(DISTINCT ?metadataValue) AS ?metadataCount)
+WHERE {
+  ?catalogue a ex:TypeSpecimenCatalogue ;
+             ex:documentsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?catalogue dcterms:title ?title . }
+
+  FILTER EXISTS {
+    ?specimen ex:heldBy <TARGET_COLLECTION_URI> .
+  }
+
+  OPTIONAL {
+    {
+      ?specimen dwc:scientificName ?metadataValue .
+    }
+    UNION {
+      ?specimen dwc:locality ?metadataValue .
+    }
+    UNION {
+      ?specimen dcterms:identifier ?metadataValue .
+    }
+    UNION {
+      ?specimen ex:heldBy ?metadataValue .
+    }
+  }
+}
+GROUP BY ?catalogue ?title
+ORDER BY DESC(?specimenCount) DESC(?metadataCount)

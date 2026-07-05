@@ -1,0 +1,6 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT (COUNT(DISTINCT ?specimen) AS ?typeSpecimenCount)
+WHERE {
+  ?publication ex:mentionsTypeSpecimen ?specimen .
+}

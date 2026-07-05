@@ -1,0 +1,12 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?family ?genus ?species (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+WHERE {
+  ?publication ex:mentionsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?specimen dwc:family ?family . }
+  OPTIONAL { ?specimen dwc:genus ?genus . }
+  OPTIONAL { ?specimen dwc:specificEpithet ?species . }
+}
+GROUP BY ?family ?genus ?species
+ORDER BY DESC(?specimenCount)

@@ -1,0 +1,10 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT DISTINCT ?institution ?collection
+WHERE {
+  ?publication ex:mentionsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?specimen ex:heldBy ?institution . }
+  OPTIONAL { ?specimen dwc:collectionCode ?collection . }
+}
+ORDER BY ?institution ?collection

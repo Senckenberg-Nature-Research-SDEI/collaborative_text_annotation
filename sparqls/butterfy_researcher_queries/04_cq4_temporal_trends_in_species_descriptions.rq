@@ -1,0 +1,9 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?year (COUNT(?taxon) AS ?speciesCount)
+WHERE {
+    ?taxon ex:yearPublished ?year .
+}
+GROUP BY ?year
+ORDER BY ?year

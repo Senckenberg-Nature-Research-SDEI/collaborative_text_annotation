@@ -1,0 +1,8 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+PREFIX dc: <http://purl.org/dc/terms/>
+
+SELECT ?author ?publication
+WHERE {
+    <TARGET_TAXON_URI> ex:authoredBy ?author ;
+                       ex:publishedIn ?publication .
+}

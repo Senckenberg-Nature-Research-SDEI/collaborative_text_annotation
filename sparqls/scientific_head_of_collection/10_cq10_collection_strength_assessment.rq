@@ -1,0 +1,14 @@
+SELECT ?family
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+       (COUNT(DISTINCT ?publication) AS ?publicationCount)
+WHERE {
+  ?specimen a ex:TypeSpecimen ;
+            ex:belongsToCollection <TARGET_COLLECTION_URI> ;
+            dwc:family ?family .
+
+  OPTIONAL {
+    ?publication ex:documentsTypeSpecimen ?specimen .
+  }
+}
+GROUP BY ?family
+ORDER BY DESC(?specimenCount) DESC(?publicationCount)

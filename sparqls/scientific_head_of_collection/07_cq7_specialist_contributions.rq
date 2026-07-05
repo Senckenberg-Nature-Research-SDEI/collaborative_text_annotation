@@ -1,0 +1,8 @@
+SELECT ?author
+       (COUNT(DISTINCT ?publication) AS ?publicationCount)
+WHERE {
+  ?publication ex:documentsCollection <TARGET_COLLECTION_URI> ;
+               dcterms:creator ?author .
+}
+GROUP BY ?author
+ORDER BY DESC(?publicationCount)

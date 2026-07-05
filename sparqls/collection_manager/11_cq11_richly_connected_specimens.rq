@@ -1,0 +1,13 @@
+SELECT ?specimen (COUNT(DISTINCT ?linkedEntity) AS ?connectionCount)
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  {
+    ?specimen ?property ?linkedEntity .
+  }
+  UNION {
+    ?linkedEntity ?property ?specimen .
+  }
+}
+GROUP BY ?specimen
+ORDER BY DESC(?connectionCount)

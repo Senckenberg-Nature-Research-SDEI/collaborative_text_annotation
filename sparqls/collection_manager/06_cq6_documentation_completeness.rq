@@ -1,0 +1,28 @@
+SELECT ?specimen (COUNT(DISTINCT ?metadataValue) AS ?metadataCount)
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  {
+    ?specimen dwc:scientificName ?metadataValue .
+  }
+  UNION {
+    ?specimen dwc:locality ?metadataValue .
+  }
+  UNION {
+    ?specimen dwc:recordedBy ?metadataValue .
+  }
+  UNION {
+    ?specimen dcterms:identifier ?metadataValue .
+  }
+  UNION {
+    ?specimen ex:heldBy ?metadataValue .
+  }
+  UNION {
+    ?specimen foaf:depiction ?metadataValue .
+  }
+  UNION {
+    ?publication dcterms:bibliographicCitation ?metadataValue .
+  }
+}
+GROUP BY ?specimen
+ORDER BY DESC(?metadataCount)

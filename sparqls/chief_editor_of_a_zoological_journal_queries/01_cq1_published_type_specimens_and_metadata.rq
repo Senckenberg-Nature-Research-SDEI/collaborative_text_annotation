@@ -1,0 +1,15 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?specimen ?institution ?institutionCode ?catalogNumber ?taxon
+       ?locality ?sex ?individualCount ?publication
+WHERE {
+  ?publication ex:mentionsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?specimen ex:heldBy ?institution . }
+  OPTIONAL { ?specimen dwc:institutionCode ?institutionCode . }
+  OPTIONAL { ?specimen dwc:catalogNumber ?catalogNumber . }
+  OPTIONAL { ?specimen dwc:scientificName ?taxon . }
+  OPTIONAL { ?specimen dwc:locality ?locality . }
+  OPTIONAL { ?specimen dwc:sex ?sex . }
+  OPTIONAL { ?specimen dwc:individualCount ?individualCount . }
+}

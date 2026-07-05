@@ -1,0 +1,8 @@
+SELECT DISTINCT ?publication ?title
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+  ?specimen ex:heldBy <TARGET_INSTITUTION_OR_COLLECTION_URI> .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+}
+ORDER BY ?title

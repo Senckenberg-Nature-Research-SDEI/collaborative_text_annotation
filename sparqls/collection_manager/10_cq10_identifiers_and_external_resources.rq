@@ -1,0 +1,8 @@
+SELECT ?specimen ?identifier ?catalogNumber ?externalResource
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?specimen dcterms:identifier ?identifier . }
+  OPTIONAL { ?specimen dwc:catalogNumber ?catalogNumber . }
+  OPTIONAL { ?specimen rdfs:seeAlso ?externalResource . }
+}

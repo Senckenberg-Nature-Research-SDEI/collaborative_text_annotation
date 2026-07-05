@@ -1,0 +1,10 @@
+SELECT ?family
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+WHERE {
+  ?specimen a ex:TypeSpecimen ;
+            ex:belongsToCollection <TARGET_COLLECTION_URI> ;
+            dwc:family ?family .
+}
+GROUP BY ?family
+ORDER BY DESC(?specimenCount)
+LIMIT 10

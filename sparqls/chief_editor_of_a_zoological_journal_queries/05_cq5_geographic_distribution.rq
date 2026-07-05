@@ -1,0 +1,12 @@
+PREFIX ex: <http://specimenkb.sdei.senckenberg.de/ontology#>
+
+SELECT ?country ?stateProvince ?locality (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+WHERE {
+  ?publication ex:mentionsTypeSpecimen ?specimen .
+
+  OPTIONAL { ?specimen dwc:country ?country . }
+  OPTIONAL { ?specimen dwc:stateProvince ?stateProvince . }
+  OPTIONAL { ?specimen dwc:locality ?locality . }
+}
+GROUP BY ?country ?stateProvince ?locality
+ORDER BY DESC(?specimenCount)

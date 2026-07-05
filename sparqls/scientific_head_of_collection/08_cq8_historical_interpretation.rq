@@ -1,0 +1,12 @@
+SELECT ?publication ?title ?year
+WHERE {
+  ?publication ex:documentsCollection <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+
+  OPTIONAL {
+    ?publication dcterms:issued ?date .
+    BIND(YEAR(?date) AS ?year)
+  }
+}
+ORDER BY ?year

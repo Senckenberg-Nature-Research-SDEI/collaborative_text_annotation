@@ -1,0 +1,7 @@
+SELECT ?specimen (COUNT(DISTINCT ?publication) AS ?sourceCount)
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen .
+}
+GROUP BY ?specimen
+HAVING (COUNT(DISTINCT ?publication) > 1)
+ORDER BY DESC(?sourceCount)

@@ -1,0 +1,10 @@
+SELECT DISTINCT ?author ?publication ?title
+WHERE {
+  ?publication ex:documentsTypeSpecimen ?specimen ;
+               dcterms:creator ?author .
+
+  ?specimen ex:heldBy <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?publication dcterms:title ?title . }
+}
+ORDER BY ?author ?title

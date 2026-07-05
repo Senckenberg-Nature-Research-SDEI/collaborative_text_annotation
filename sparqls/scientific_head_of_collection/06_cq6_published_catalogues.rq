@@ -1,0 +1,12 @@
+SELECT DISTINCT ?catalogue ?title ?year
+WHERE {
+  ?catalogue ex:documentsCollection <TARGET_COLLECTION_URI> .
+
+  OPTIONAL { ?catalogue dcterms:title ?title . }
+
+  OPTIONAL {
+    ?catalogue dcterms:issued ?date .
+    BIND(YEAR(?date) AS ?year)
+  }
+}
+ORDER BY ?year

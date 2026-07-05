@@ -1,0 +1,11 @@
+SELECT ?year
+       (COUNT(DISTINCT ?specimen) AS ?specimenCount)
+WHERE {
+  ?specimen a ex:TypeSpecimen ;
+            ex:belongsToCollection <TARGET_COLLECTION_URI> ;
+            dwc:eventDate ?date .
+
+  BIND(YEAR(?date) AS ?year)
+}
+GROUP BY ?year
+ORDER BY ?year
