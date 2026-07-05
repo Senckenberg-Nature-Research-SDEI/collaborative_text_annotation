@@ -1,7 +1,7 @@
 from typing import Optional, Sequence
 
-from src.mdp_annotator.committee_factory import build_instruction_tuned_committee
-from src.mdp_annotator.collaborative_annotator import CollaborativeLLMAnnotator, TTLConceptCatalog
+from src.collaborative_annotator.committee_factory import build_instruction_tuned_committee
+from src.collaborative_annotator.collaborative_annotator import CollaborativeLLMAnnotator, TTLConceptCatalog
 
 
 class CollaborativeEntityAnnotator(CollaborativeLLMAnnotator):

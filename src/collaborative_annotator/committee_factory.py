@@ -2,7 +2,7 @@ from dataclasses import replace
 from typing import List, Optional, Sequence
 
 from src.llm.openai_gpt_agent import OpenAIGPTAgent, load_gpt_model_config
-from src.mdp_annotator.collaborative_annotator import (
+from src.collaborative_annotator.collaborative_annotator import (
     DEFAULT_INSTRUCTION_PROFILES,
     InstructionTunedCommitteeMember,
 )
