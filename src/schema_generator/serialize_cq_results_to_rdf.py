@@ -593,7 +593,7 @@ def build_ttl(data: dict, base_iri: str, term_rows: list[dict]) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Serialize grouped CQ extraction results to RDF Turtle")
     parser.add_argument("--input", default="outputs/cq_concepts_properties_grouped.json", help="Input grouped JSON path")
-    parser.add_argument("--output", default="outputs/cq_concepts_properties.ttl", help="Output Turtle path")
+    parser.add_argument("--output", default="outputs/type_specimen_schema.ttl", help="Output Turtle path")
     parser.add_argument("--term-versions", default="data/existing_ontologies/term_versions.csv", help="Term versions CSV path")
     parser.add_argument("--base-iri", default="https://example.org/cq/", help="Base IRI for minted resources")
     args = parser.parse_args()

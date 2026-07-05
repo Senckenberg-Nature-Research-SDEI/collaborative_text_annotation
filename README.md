@@ -138,13 +138,13 @@ Defaults:
 - input: `data/competency_questions/competency_questions.json`
 - jsonl output: `outputs/cq_concepts_properties.jsonl`
 - grouped output: `outputs/cq_concepts_properties_grouped.json`
-- rdf output: `outputs/cq_concepts_properties.ttl`
+- rdf output: `outputs/type_specimen_schema.ttl`
 
 ### Serialize grouped results to Turtle only
 ```bash
 python src/serialize_cq_results_to_rdf.py \
   --input outputs/cq_concepts_properties_grouped.json \
-  --output outputs/cq_concepts_properties.ttl
+  --output outputs/type_specimen_schema.ttl
 ```
 
 ## Prompt Runner
@@ -164,6 +164,6 @@ Useful options:
 ## Notes
 - The collaborative annotator uses a six-model committee.
 - Models are configured in `config/model_config.yaml`.
-- The Turtle ontology for annotation candidates comes from `outputs/cq_concepts_properties.ttl`.
+- The Turtle ontology for annotation candidates comes from `outputs/type_specimen_schema.ttl`.
 - The generated text file `data/type_specimen_catalogues/out_steffan_catalogues_texts.txt` is used as the default annotation input.
 

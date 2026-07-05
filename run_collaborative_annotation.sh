@@ -8,7 +8,7 @@ set -euo pipefail
 #   HF_BASE_URL=https://router.huggingface.co/v1
 #   HF_API_KEY=hf_xxx
 #   CONFIG_PATH=config/model_config.yaml
-#   TTL_PATH=outputs/cq_concepts_properties.ttl
+#   TTL_PATH=outputs/type_specimen_schema.ttl
 #   ENTITY_OUTPUT_PATH=outputs/annotated_entities.jsonl
 #   RELATION_OUTPUT_PATH=outputs/annotated_relations.jsonl
 
@@ -16,7 +16,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
 CONFIG_PATH="${CONFIG_PATH:-config/model_config.yaml}"
-TTL_PATH="${TTL_PATH:-outputs/cq_concepts_properties.ttl}"
+TTL_PATH="${TTL_PATH:-outputs/type_specimen_schema.ttl}"
 TEXT_FILE_PATH="${TEXT_FILE_PATH:-data/type_specimen_catalogues/out_steffan_catalogues_texts.txt}"
 ENTITY_OUTPUT_PATH="${ENTITY_OUTPUT_PATH:-outputs/annotated_entities.jsonl}"
 RELATION_OUTPUT_PATH="${RELATION_OUTPUT_PATH:-outputs/annotated_relations.jsonl}"

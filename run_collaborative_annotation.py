@@ -33,7 +33,7 @@ def _without_evidence(items: List[dict], source_text: str) -> List[dict]:
         if not record.get("annotated_text"):
             record["annotated_text"] = source_text
         if not record.get("entity"):
-            record["entity"] = record.get("label", "")
+            record["entity"] = str(item.get("evidence", "")).strip() or source_text
         cleaned.append(record)
     return cleaned
 
@@ -45,7 +45,7 @@ def main() -> None:
     parser.add_argument("--config", default="config/model_config.yaml", help="Model config path.")
     parser.add_argument(
         "--ttl",
-        default="outputs/cq_concepts_properties.ttl",
+        default="outputs/type_specimen_schema.ttl",
         help="Ontology TTL path for classes/properties.",
     )
     parser.add_argument(

@@ -4,7 +4,7 @@ set -euo pipefail
 INPUT_FILE="${1:-data/competency_questions/competency_questions.json}"
 OUTPUT_FILE="${2:-outputs/cq_concepts_properties.jsonl}"
 GROUPED_OUTPUT_FILE="${3:-outputs/cq_concepts_properties_grouped.json}"
-RDF_OUTPUT_FILE="${4:-outputs/cq_concepts_properties.ttl}"
+RDF_OUTPUT_FILE="${4:-outputs/type_specimen_schema.ttl}"
 MODEL_ALIAS="${MODEL_ALIAS:-llm_model}"
 CONFIG_FILE="${CONFIG_FILE:-config/model_config.yaml}"
 TERM_VERSIONS_FILE="${TERM_VERSIONS_FILE:-data/existing_ontologies/term_versions.csv}"

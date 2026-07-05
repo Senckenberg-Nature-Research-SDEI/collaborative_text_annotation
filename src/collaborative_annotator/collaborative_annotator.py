@@ -226,7 +226,8 @@ class CollaborativeLLMAnnotator:
             f"Task: annotate {self.annotation_kind} from the input text.\n"
             "Use ONLY the provided ontology candidates.\n"
             "Return JSON with this shape:\n"
-            '{"annotations": [{"label": "...", "score": 0.0, "evidence": "..."}]}\n'
+            '{"annotations": [{"entity": "...", "label": "...", "score": 0.0, "evidence": "..."}]}\n'
+            "Entity must be the exact text span from the input text that supports the ontology label.\n"
             "Where score is between 0 and 1.\n"
             f"Input text:\n{text}\n\n"
             f"Ontology candidates:\n{json.dumps(candidate_list, ensure_ascii=False)}"
@@ -266,9 +267,12 @@ class CollaborativeLLMAnnotator:
                 continue
 
             score = _coerce_score(item.get("score", 0.0))
+            raw_entity = str(item.get("entity", "")).strip()
             evidence = str(item.get("evidence", "")).strip()
+            entity = _resolve_entity_text(raw_entity, evidence, canonical.label, text)
             normalized_results.append(
                 {
+                    "entity": entity,
                     "label": canonical.label,
                     "iri": canonical.iri,
                     "score": score,
@@ -294,7 +298,7 @@ class CollaborativeLLMAnnotator:
                 if label not in aggregate:
                     aggregate[label] = {
                         "annotated_text": text,
-                        "entity": label,
+                        "entity": ann.get("entity", label),
                         "label": label,
                         "iri": ann["iri"],
                         "total_score": 0.0,
@@ -347,3 +351,20 @@ def _coerce_score(value) -> float:
     except (TypeError, ValueError):
         return 0.0
     return max(0.0, min(1.0, score))
+
+
+def _resolve_entity_text(raw_entity: str, evidence: str, fallback_label: str, source_text: str) -> str:
+    entity = (raw_entity or "").strip()
+    if entity and entity.lower() in (source_text or "").lower():
+        return entity
+
+    quoted = re.findall(r'"([^"\n]+)"', evidence or "")
+    for value in quoted:
+        candidate = value.strip()
+        if candidate and candidate.lower() in (source_text or "").lower():
+            return candidate
+
+    if evidence and evidence.lower() in (source_text or "").lower():
+        return evidence
+
+    return fallback_label

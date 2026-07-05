@@ -11,7 +11,7 @@ class CollaborativeEntityAnnotator(CollaborativeLLMAnnotator):
 		config_path: str = "config/model_config.yaml",
 		*,
 		model_aliases: Optional[Sequence[str]] = None,
-		ttl_path: str = "outputs/cq_concepts_properties.ttl",
+		ttl_path: str = "outputs/type_specimen_schema.ttl",
 		top_k: int = 10,
 		min_votes: int = 1,
 		score_threshold: float = 0.45,
@@ -31,7 +31,7 @@ class CollaborativeEntityAnnotator(CollaborativeLLMAnnotator):
 	def __init__(
 		self,
 		llm_agents: Sequence,
-		ttl_path: str = "outputs/cq_concepts_properties.ttl",
+		ttl_path: str = "outputs/type_specimen_schema.ttl",
 		*,
 		expected_agent_count: int = 6,
 		top_k: int = 10,
