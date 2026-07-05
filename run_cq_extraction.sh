@@ -368,7 +368,7 @@ with open(grouped_path, "w", encoding="utf-8") as out:
   json.dump(result, out, ensure_ascii=False, indent=2)
 PY
 
-python src/serialize_cq_results_to_rdf.py \
+python src/schema_generator/serialize_cq_results_to_rdf.py \
   --input "$GROUPED_OUTPUT_FILE" \
   --output "$RDF_OUTPUT_FILE"
 
