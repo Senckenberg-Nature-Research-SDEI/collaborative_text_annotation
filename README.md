@@ -1,4 +1,4 @@
-# Memory-based Model Context Protocol
+# Collaborative Text Annotation
 Information Extraction Tools to Annotate Type Specimen Catalogs.
 
 # Memories
