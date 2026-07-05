@@ -9,6 +9,8 @@ set -euo pipefail
 #   HF_API_KEY=hf_xxx
 #   CONFIG_PATH=config/model_config.yaml
 #   TTL_PATH=outputs/type_specimen_schema.ttl
+#   ENTITY_SYSTEM_PROMPT_PATH=data/prompts/entity_system_prompt.txt
+#   RELATION_SYSTEM_PROMPT_PATH=data/prompts/relation_system_prompt.txt
 #   ENTITY_OUTPUT_PATH=outputs/annotated_entities.jsonl
 #   RELATION_OUTPUT_PATH=outputs/annotated_relations.jsonl
 
@@ -17,6 +19,8 @@ cd "$ROOT_DIR"
 
 CONFIG_PATH="${CONFIG_PATH:-config/model_config.yaml}"
 TTL_PATH="${TTL_PATH:-outputs/type_specimen_schema.ttl}"
+ENTITY_SYSTEM_PROMPT_PATH="${ENTITY_SYSTEM_PROMPT_PATH:-data/prompts/entity_system_prompt.txt}"
+RELATION_SYSTEM_PROMPT_PATH="${RELATION_SYSTEM_PROMPT_PATH:-data/prompts/relation_system_prompt.txt}"
 TEXT_FILE_PATH="${TEXT_FILE_PATH:-data/type_specimen_catalogues/out_steffan_catalogues_texts.txt}"
 ENTITY_OUTPUT_PATH="${ENTITY_OUTPUT_PATH:-outputs/annotated_entities.jsonl}"
 RELATION_OUTPUT_PATH="${RELATION_OUTPUT_PATH:-outputs/annotated_relations.jsonl}"
@@ -31,6 +35,8 @@ fi
 python run_collaborative_annotation.py \
   --config "$CONFIG_PATH" \
   --ttl "$TTL_PATH" \
+  --entity-system-prompt "$ENTITY_SYSTEM_PROMPT_PATH" \
+  --relation-system-prompt "$RELATION_SYSTEM_PROMPT_PATH" \
   --aliases committee_qwen committee_llama committee_mistral committee_deepseek committee_gemma committee_other \
   $(
     has_text_arg=0

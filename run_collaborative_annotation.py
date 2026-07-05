@@ -49,6 +49,16 @@ def main() -> None:
         help="Ontology TTL path for classes/properties.",
     )
     parser.add_argument(
+        "--entity-system-prompt",
+        default="data/prompts/entity_system_prompt.txt",
+        help="Path to entity annotation system prompt text file.",
+    )
+    parser.add_argument(
+        "--relation-system-prompt",
+        default="data/prompts/relation_system_prompt.txt",
+        help="Path to relation annotation system prompt text file.",
+    )
+    parser.add_argument(
         "--aliases",
         nargs=6,
         default=[
@@ -78,10 +88,12 @@ def main() -> None:
     entity_annotator = CollaborativeEntityAnnotator(
         llm_agents=committee,
         ttl_path=args.ttl,
+        system_prompt_path=args.entity_system_prompt,
     )
     relation_annotator = CollaborativeRelationAnnotator(
         llm_agents=committee,
         ttl_path=args.ttl,
+        system_prompt_path=args.relation_system_prompt,
     )
 
     output_handle = Path(args.output).open("w", encoding="utf-8") if args.output else None
