@@ -44,12 +44,12 @@ Optional environment variables:
 │   └── cq_concepts_properties.ttl
 ├── src/
 │   ├── llm/
-│   ├── mdp_annotator/
+│   ├── collaborative_annotator/
 │   ├── schema_generator/
 │   └── utils.py
 ├── run_collaborative_annotation.py
 ├── run_cq_extraction.sh
-├── run_mdp_collaborative_annotation.sh
+├── run_collaborative_annotation.sh
 ├── run_prompts.py
 ├── run_turtle_serilizer.sh
 └── README.md
@@ -90,22 +90,22 @@ Evidence is not saved in the final output files.
 
 ### Run the annotator
 ```bash
-bash run_mdp_collaborative_annotation.sh
+bash run_collaborative_annotation.sh
 ```
 
 ### Annotate a custom inline text
 ```bash
-bash run_mdp_collaborative_annotation.sh --text "Specimen has catalog number ZM-123 and associated media image."
+bash run_collaborative_annotation.sh --text "Specimen has catalog number ZM-123 and associated media image."
 ```
 
 ### Annotate a different text file
 ```bash
-bash run_mdp_collaborative_annotation.sh --text-file path/to/your_texts.txt
+bash run_collaborative_annotation.sh --text-file path/to/your_texts.txt
 ```
 
 ### Write to custom output paths
 ```bash
-bash run_mdp_collaborative_annotation.sh \
+bash run_collaborative_annotation.sh \
   --entity-output outputs/my_entities.jsonl \
   --relation-output outputs/my_relations.jsonl
 ```
@@ -114,7 +114,7 @@ bash run_mdp_collaborative_annotation.sh \
 If you also want the combined record, pass:
 
 ```bash
-bash run_mdp_collaborative_annotation.sh --output outputs/annotated_texts.jsonl
+bash run_collaborative_annotation.sh --output outputs/annotated_texts.jsonl
 ```
 
 ### Output format
@@ -167,5 +167,3 @@ Useful options:
 - The Turtle ontology for annotation candidates comes from `outputs/cq_concepts_properties.ttl`.
 - The generated text file `data/type_specimen_catalogues/out_steffan_catalogues_texts.txt` is used as the default annotation input.
 
-## MCP with Dynamic Memory Architecture
-WIP for figure.
