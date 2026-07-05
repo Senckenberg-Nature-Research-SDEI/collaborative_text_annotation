@@ -5,9 +5,9 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import List, Optional
 
-from src.mdp_annotator.committee_factory import build_instruction_tuned_committee
-from src.mdp_annotator.entity_annotator import CollaborativeEntityAnnotator
-from src.mdp_annotator.relation_annotator import CollaborativeRelationAnnotator
+from src.collaborative_annotator.committee_factory import build_instruction_tuned_committee
+from src.collaborative_annotator.entity_annotator import CollaborativeEntityAnnotator
+from src.collaborative_annotator.relation_annotator import CollaborativeRelationAnnotator
 
 
 def _read_texts(text_args: List[str], text_file: Optional[str]) -> List[str]:
