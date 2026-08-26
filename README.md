@@ -1,6 +1,9 @@
 # Collaborative Text Annotation
 Information Extraction Tools to annotate type specimen catalogs and competency-question outputs.
 
+## Paper
+The paper for this project has been accepted by the Sci-K workshop co-located with ISWC 2026 in Bari, Italy.
+
 ## Overview
 This repository provides two related workflows:
 
